@@ -73,6 +73,7 @@
               {{ post.message }}
             </div>
           </div>
+          //status is more important, reposts are second, likes are third?
         </div>
       </div>
     </div>
@@ -83,14 +84,6 @@
       <p>{{ page.location.street }}, {{ page.location.city }}, {{ page.location.state }}, {{ page.location.zip }}</p>
       <p><a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">map</a></p>
     </div>
-
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    
   </div>
 </div>
