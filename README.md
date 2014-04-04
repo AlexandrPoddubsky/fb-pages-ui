@@ -11,3 +11,11 @@ cd fb-pages-ui
 edit Gruntfile.js to point to your API under the 'ngconstant' section.
 grunt serve
 ````
+
+TODO
+------------------
+Handle conditions where no server connection is available. Options include local storage, followed by default content to notify of the outage.
+Tests.
+Encapsulate post rendering in directive.
+Encapsulate like rendering in directive.
+Pull in some FB images.

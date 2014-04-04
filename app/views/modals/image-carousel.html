@@ -1,0 +1,13 @@
+<div ng-controller="ImageCarouselCtrl">
+  <div style="height: 305px">
+    <carousel interval="myInterval">
+      <slide ng-repeat="image in images.data">
+        <img ng-src="{{image.source}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>{{ image.name }}</h4>
+          <p>{{ (image.likes.data.length > 0) ? 'likes' : '' }} {{ image.likes.data.length }}</p>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+</div>

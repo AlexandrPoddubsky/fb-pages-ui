@@ -5,6 +5,8 @@ var serviceModule = angular.module('fbPagesUiApp.services', ['ngResource']);
 serviceModule.factory('fbPagesApi', ['$resource', 'ENV', function ($resource, ENV ) {
   return {
     posts: $resource(ENV.apiEndpoint + '/fb/posts'),
-    page: $resource(ENV.apiEndpoint + '/fb/')
+    page: $resource(ENV.apiEndpoint + '/fb/'),
+    photos: $resource(ENV.apiEndpoint + '/fb/photos/uploaded'),
+    config: $resource(ENV.apiEndpoint + '/config')
   };
 }]);
