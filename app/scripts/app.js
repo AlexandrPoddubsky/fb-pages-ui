@@ -10,6 +10,7 @@ var app = angular.module('fbPagesUiApp', [
   'ui.bootstrap'
 ]);
 
+//load facebook with configured appId
 app.run(['fbPagesApi', function (fbPagesApi) {
   var config = fbPagesApi.config.get(function () {
     (function(d, s, id, appId) {
@@ -20,4 +21,11 @@ app.run(['fbPagesApi', function (fbPagesApi) {
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk', config.appId));
   });
+}]);
+
+//fetch the background image
+app.run(['$rootScope', 'fbPagesApi', function ($rootScope, fbPagesApi) {
+  $rootScope.page = fbPagesApi.page.get();
+  //reset bootstrap's background color...
+  angular.element('body').css('background-color', 'transparent');
 }]);

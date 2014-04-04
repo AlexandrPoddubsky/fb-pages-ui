@@ -2,9 +2,9 @@
 
 var directiveModule = angular.module('fbPagesUiApp.directives', []);
 
-directiveModule.directive('backImg', function(){
+directiveModule.directive('backImg', function () {
   return function(scope, element, attrs){
-    attrs.$observe('backImg', function(value) {
+    attrs.$observe('backImg', function (value) {
       element.css({
         'background': 'url(' + value + ') no-repeat center center fixed', 
         '-webkit-background-size': 'cover',
@@ -13,5 +13,12 @@ directiveModule.directive('backImg', function(){
         'background-size': 'cover'
       });
     });
+  };
+});
+
+directiveModule.directive('fbHours', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'views/templates/fbHours.html'
   };
 });

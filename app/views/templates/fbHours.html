@@ -1,0 +1,64 @@
+<style>
+#fb-hours > fb-hours {
+    border: 2px dashed #444;
+    height: 125px;
+    
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    
+    /* just for demo */
+    min-width: 612px;
+}
+
+#fb-hours > div {
+  padding-left: 10px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  zoom: 1
+}
+#fb-hours:after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+</style>
+<div id="fb-hours" class="h6">
+  <div>
+    Sunday
+    <br/>
+    {{ page.hours.sun_1_open }}-{{ page.hours.sun_1_close }}
+  </div>
+  <div>
+    Monday
+    <br/>
+    {{ page.hours.mon_1_open }}-{{ page.hours.mon_1_close }}
+  </div>
+  <div>
+    Tuesday
+    <br/>
+    {{ page.hours.tue_1_open }}-{{ page.hours.tue_1_close }}
+  </div>
+  <div>
+    Wednesday
+    <br/>
+    {{ page.hours.wed_1_open }}-{{ page.hours.wed_1_close }}
+  </div>
+  <div>
+    Thursday
+    <br/>
+    {{ page.hours.thu_1_open }}-{{ page.hours.thu_1_close }}
+  </div>
+  <div>
+    Friday
+    <br/>
+    {{ page.hours.fri_1_open }}-{{ page.hours.fri_1_close }}
+  </div>
+  <div>
+    Saturday
+    <br/>
+    {{ page.hours.sat_1_open }}-{{ page.hours.sat_1_close }}
+  </div></div>
