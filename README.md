@@ -1,7 +1,9 @@
 fb-pages-ui
 ===========
 
-UI for a Facebook Page based on public APIs available via the companion NodeJS app at: https://github.com/pherris/fb-pages-api
+UI for a Facebook Page based on public APIs available via the companion NodeJS app at: https://github.com/pherris/fb-pages-api.
+
+This UI takes posts from your Facebook page and displays them as a web site. The posts you make are prioritized higher on the page than shared posts. This is done to keep your business specific content at the top of the screen.
 
 Usage
 ------------------
@@ -18,4 +20,3 @@ Handle conditions where no server connection is available. Options include local
 Tests.
 Encapsulate post rendering in directive.
 Encapsulate like rendering in directive.
-Pull in some FB images.
