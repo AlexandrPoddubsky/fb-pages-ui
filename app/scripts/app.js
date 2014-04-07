@@ -11,7 +11,7 @@ var app = angular.module('fbPagesUiApp', [
   'ui.router'
 ]);
 
-app.run([        '$rootScope', '$state', '$stateParams', 
+app.run([        '$rootScope', '$state', '$stateParams',
         function ($rootScope,   $state,   $stateParams) {
 
   // It's very handy to add references to $state and $stateParams to the $rootScope
@@ -23,21 +23,23 @@ app.run([        '$rootScope', '$state', '$stateParams',
 }]);
 
 //load facebook with configured appId
-app.run([        'fbPagesApi', 
+app.run([        'fbPagesApi',
         function (fbPagesApi) {
   var config = fbPagesApi.config.get(function () {
     (function(d, s, id, appId) {
       var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
+      if (d.getElementById(id)) {
+        return;
+      }
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + appId;
+      js.src = '//connect.facebook.net/en_US/all.js#xfbml=1&appId=' + appId;
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk', config.appId));
   });
 }]);
 
 //fetch the background image
-app.run([  '$rootScope', 'fbPagesApi', 
+app.run([  '$rootScope', 'fbPagesApi',
   function ($rootScope,   fbPagesApi) {
   $rootScope.page = fbPagesApi.page.get();
   //reset bootstrap's background color...
@@ -52,16 +54,16 @@ app.config(
       // Redirects and Otherwise //
       /////////////////////////////
 
-      // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
-      $urlRouterProvider
+      // // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
+      // $urlRouterProvider
 
-        // The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
-        // Here we are just setting up some convenience urls.
-        // .when('/c?id', '/contacts/:id')
-        // .when('/user/:id', '/contacts/:id')
+      //   // The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
+      //   // Here we are just setting up some convenience urls.
+      //   // .when('/c?id', '/contacts/:id')
+      //   // .when('/user/:id', '/contacts/:id')
 
-        // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
-        .otherwise('/');
+      //   // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
+      //   .otherwise('/');
 
 
       //////////////////////////
@@ -75,10 +77,10 @@ app.config(
         // Home //
         //////////
 
-        .state("home", {
+        .state('home', {
 
           // Use a url of "/" to set a states as the "index".
-          url: "/",
+          url: '/',
 
           // Example of an inline template string. By default, templates
           // will populate the ui-view within the parent state's template.
@@ -96,9 +98,9 @@ app.config(
         .state('albums', {
           url: '/albums',
           templateUrl: 'views/albums.html', 
-          controller: ['$scope', '$stateParams', '$state',
-                  function (  $scope,   $stateParams,   $state) {
-                    $scope.albums = { 'name': 'bla bla!'};
+          controller: [      '$scope', '$stateParams', '$state', 'fbPagesApi',
+                  function (  $scope,   $stateParams,   $state,   fbPagesApi) {
+                    $scope.albums = fbPagesApi.albums.get();
                     // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
 
                     // $scope.edit = function () {
@@ -108,6 +110,27 @@ app.config(
                     //   $state.go('.edit', $stateParams);
                     // };
                   }]
+        })
+
+        .state('albums.detail', {
+          url: '/album/:albumId',
+          views: {
+            'albumPhotos': {
+              templateUrl: 'views/album-details.html',
+              controller: [      '$scope', '$stateParams', '$state', 'fbPagesApi',
+                      function (  $scope,   $stateParams,   $state,   fbPagesApi) {
+                        $scope.album = fbPagesApi.album.get({ 'albumId': $stateParams.albumId });
+                        // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
+
+                        // $scope.edit = function () {
+                        //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
+                        //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
+                        //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
+                        //   $state.go('.edit', $stateParams);
+                        // };
+                      }]
+            }
+          }
         })
 
         ///////////

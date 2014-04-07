@@ -19,12 +19,12 @@
         <fb-hours></fb-hours>
       </p>
     </div>
-
+<div id="content-body">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row marketing">
           <div ng-repeat="post in posts.data">
-            <div class="fb-post" ng-if="post.type === 'status'"> <!-- or "status_type": "added_photos", (handle images) -->
+            <div class="fb-post" ng-if="post.type === 'status'"> <!-- or "status_type": "added_photos", OR "status_type": "mobile_status_update", (handle images) -->
               <h4>{{ post.message }}<!-- DRY -->
                     <small ng-if="post.likes.data.length > 0">
                       <span tooltip-placement="left" tooltip="{{ (post.likes.data.length > 0) ? 'likes' : '' }}"><span class="badge">{{ post.likes.data.length }}</span></span> <small ng-repeat="like in post.likes.data"> {{ like.name }} {{ $last ? '' : ', ' }} </small>
@@ -103,13 +103,5 @@
         </div>
       </div>
     </div>
-    
-
-    <div class="footer">
-      <p>{{ page.phone }}</p>
-      <p>{{ page.location.street }}, {{ page.location.city }}, {{ page.location.state }}, {{ page.location.zip }}</p>
-      <p><a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">map</a></p>
-    </div>
-
   </div>
 </div>
