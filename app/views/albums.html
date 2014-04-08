@@ -1,15 +1,16 @@
 <div id="content-body">
+  <div class="container">
     <div class="panel panel-default">
       <div class="panel-body">
         <ui>
           <li ng-repeat="album in albums.data">
-            {{ album.name}} ({{ album.count }} {{ album.count > 1 ? 'photos' : 'photo' }})  <small>last updated: {{ album.updated_time }}
+            <a ui-sref="albums.detail({albumId: '{{ album.id }}'})">{{ album.name}} {{ album.id }}</a> ({{ album.count }} {{ album.count > 1 ? 'photos' : 'photo' }})  <small>last updated: {{ album.updated_time }}
           </li>
         </ui>
 
         <!-- named view for album display -->
         <div ui-view="albumPhotos" class="slide"></div>
-        
+
       </div>
     </div>
   </div>

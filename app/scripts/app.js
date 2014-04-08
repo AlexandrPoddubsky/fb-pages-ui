@@ -119,6 +119,7 @@ app.config(
               templateUrl: 'views/album-details.html',
               controller: [      '$scope', '$stateParams', '$state', 'fbPagesApi',
                       function (  $scope,   $stateParams,   $state,   fbPagesApi) {
+                        console.log($stateParams.albumId);
                         $scope.album = fbPagesApi.album.get({ 'albumId': $stateParams.albumId });
                         // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
 
