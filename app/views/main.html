@@ -28,17 +28,7 @@
                     <!-- <div class="panel-body">
                       
                     </div> -->
-                    <!-- Table -->
-                    <table class="table">
-                      <tbody>
-                        <tr ng-repeat="comment in post.comments.data">
-                          <td>
-                            {{ comment.message }}
-                            <span class="h6">{{ comment.from.name }} <small tooltip-placement="right" tooltip="{{ (comment.like_count > 0) ? 'likes' : '' }}"><span class="badge">{{ (comment.like_count > 0) ? comment.like_count : '' }}</span></small> </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <fb-comments comments="post.comments.data"></fb-comments>
                   </div>
                 </div>
               </div>
@@ -73,17 +63,7 @@
                     <!-- <div class="panel-body">
                       
                     </div> -->
-                    <!-- Table -->
-                    <table class="table">
-                      <tbody>
-                        <tr ng-repeat="comment in post.comments.data">
-                          <td>
-                            {{ comment.message }}
-                            <span class="h6">{{ comment.from.name }} <small tooltip-placement="right" tooltip="{{ (comment.like_count > 0) ? 'likes' : '' }}"><span class="badge">{{ (comment.like_count > 0) ? comment.like_count : '' }}</span></small> </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <fb-comments comments="post.comments.data"></fb-comments>
                   </div>
                 </div>
               </div>
@@ -92,4 +72,3 @@
         </div>
       </div>
     </div>
-    

@@ -22,3 +22,13 @@ directiveModule.directive('fbHours', function () {
     templateUrl: 'views/templates/fbHours.html'
   };
 });
+
+directiveModule.directive('fbComments', function () {
+  return {
+    restrict: 'E',
+    scope: {
+      comments: '='
+    },
+    templateUrl: 'views/templates/fbComments.html'
+  };
+});

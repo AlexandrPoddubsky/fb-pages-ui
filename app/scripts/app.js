@@ -11,8 +11,8 @@ var app = angular.module('fbPagesUiApp', [
   'ui.router'
 ]);
 
-app.run([        '$rootScope', '$state', '$stateParams',
-        function ($rootScope,   $state,   $stateParams) {
+app.run([  '$rootScope', '$state', '$stateParams',
+  function ($rootScope,   $state,   $stateParams) {
 
   // It's very handy to add references to $state and $stateParams to the $rootScope
   // so that you can access them from any scope within your applications.For example,
@@ -23,20 +23,21 @@ app.run([        '$rootScope', '$state', '$stateParams',
 }]);
 
 //load facebook with configured appId
-app.run([        'fbPagesApi',
-        function (fbPagesApi) {
-  var config = fbPagesApi.config.get(function () {
-    (function(d, s, id, appId) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {
-        return;
-      }
-      js = d.createElement(s); js.id = id;
-      js.src = '//connect.facebook.net/en_US/all.js#xfbml=1&appId=' + appId;
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk', config.appId));
-  });
-}]);
+app.run([  'fbPagesApi',
+  function (fbPagesApi) {
+    var config = fbPagesApi.config.get(function () {
+      (function(d, s, id, appId) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s); js.id = id;
+        js.src = '//connect.facebook.net/en_US/all.js#xfbml=1&appId=' + appId;
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk', config.appId));
+    });
+  }
+]);
 
 //fetch the background image
 app.run([  '$rootScope', 'fbPagesApi',
@@ -98,18 +99,19 @@ app.config(
         .state('albums', {
           url: '/albums',
           templateUrl: 'views/albums.html', 
-          controller: [      '$scope', '$stateParams', '$state', 'fbPagesApi',
-                  function (  $scope,   $stateParams,   $state,   fbPagesApi) {
-                    $scope.albums = fbPagesApi.albums.get();
-                    // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
+          controller: ['$scope', '$stateParams', '$state', 'fbPagesApi',
+            function (  $scope,   $stateParams,   $state,   fbPagesApi) {
+              $scope.albums = fbPagesApi.albums.get();
+              // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
 
-                    // $scope.edit = function () {
-                    //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
-                    //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
-                    //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
-                    //   $state.go('.edit', $stateParams);
-                    // };
-                  }]
+              // $scope.edit = function () {
+              //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
+              //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
+              //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
+              //   $state.go('.edit', $stateParams);
+              // };
+            }
+          ]
         })
 
         .state('albums.detail', {
@@ -117,19 +119,19 @@ app.config(
           views: {
             'albumPhotos': {
               templateUrl: 'views/album-details.html',
-              controller: [      '$scope', '$stateParams', '$state', 'fbPagesApi',
-                      function (  $scope,   $stateParams,   $state,   fbPagesApi) {
-                        console.log($stateParams.albumId);
-                        $scope.album = fbPagesApi.album.get({ 'albumId': $stateParams.albumId });
-                        // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
+              controller: ['$scope', '$stateParams', '$state', 'fbPagesApi',
+                function (  $scope,   $stateParams,   $state,   fbPagesApi) {
+                  $scope.album = fbPagesApi.album.get({ 'albumId': $stateParams.albumId });
+                  // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
 
-                        // $scope.edit = function () {
-                        //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
-                        //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
-                        //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
-                        //   $state.go('.edit', $stateParams);
-                        // };
-                      }]
+                  // $scope.edit = function () {
+                  //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
+                  //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
+                  //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
+                  //   $state.go('.edit', $stateParams);
+                  // };
+                }
+              ]
             }
           }
         })
@@ -154,7 +156,8 @@ app.config(
                        '</ul>';
               }, 100);
             }]
-        })
+          }
+        );
     }
   ]
 );
