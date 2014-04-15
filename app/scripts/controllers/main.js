@@ -5,15 +5,27 @@ angular.module('fbPagesUiApp')
     $scope.posts  = fbPagesApi.posts.get();
     $scope.page   = fbPagesApi.page.get();
 
-    $scope.openCarousel = function () {
-      var modalInstance = $modal.open({
-        templateUrl: 'views/modals/image-carousel.html',
-        controller: 'ImageCarouselCtrl'
-      });
-    };
-  }]);
+    $scope.orderedPosts = {
+        'high': [],
+        'low': []
+      };
+    //sort the posts into priority order... The intent here is to load posts about the business before
+    //posts that the business promotes by sharing links, images etc. This can lead to some awareness of the 
+    //lack of actual posts by/about the business...
+    $scope.posts.$promise.then(function() {
+      //reset
+      $scope.orderedPosts = {
+        'high': [],
+        'low': []
+      };
+      
+      angular.forEach($scope.posts.data, function(post, key) {
+        if (post.type === 'status' || post.status_type === 'added_photos' || post.status_type === 'mobile_status_update') {
+          this.high.push(post);
+        } else {
+          this.low.push(post);
+        }
+      }, $scope.orderedPosts);
+    });
 
-angular.module('fbPagesUiApp')
-  .controller('ImageCarouselCtrl', ['$scope', 'fbPagesApi', function ($scope, fbPagesApi) {
-    $scope.images = fbPagesApi.photos.get();
   }]);

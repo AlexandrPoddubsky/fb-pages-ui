@@ -1,0 +1,11 @@
+<h4>
+  <a href="{{ post.link }}"><img src="{{ post.icon }}"/></a> 
+  <small>{{ post.updated_time | date: 'short' }}</small> 
+  {{ post.message  || post.story}} 
+  <small ng-if="post.likes.data.length > 0">
+    <span tooltip="{{ (post.likes.data.length > 0) ? 'likes' : '' }}">
+      <span class="badge">{{ post.likes.data.length }}</span>
+  	</span>
+  	<small ng-repeat="like in post.likes.data"> {{ like.name }} {{ $last ? '' : ', ' }} </small>
+  </small>
+</h4>

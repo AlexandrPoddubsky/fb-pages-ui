@@ -23,12 +23,32 @@ directiveModule.directive('fbHours', function () {
   };
 });
 
-directiveModule.directive('fbComments', function () {
+directiveModule.directive('fbPostComments', function () {
   return {
     restrict: 'E',
     scope: {
-      comments: '='
+      post: '='
     },
     templateUrl: 'views/templates/fbComments.html'
+  };
+});
+
+directiveModule.directive('fbPostImage', function () {
+  return {
+    restrict: 'E',
+    scope: {
+      post: '='
+    },
+    templateUrl: 'views/templates/fbPostImage.html'
+  };
+});
+
+directiveModule.directive('fbPostHeader', function () {
+  return {
+    restrict: 'E',
+    scope: {
+      post: '='
+    },
+    templateUrl: 'views/templates/fbPostHeader.html'
   };
 });

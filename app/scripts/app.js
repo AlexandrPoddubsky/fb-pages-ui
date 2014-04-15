@@ -23,19 +23,23 @@ app.run([  '$rootScope', '$state', '$stateParams',
 }]);
 
 //load facebook with configured appId
-app.run([  'fbPagesApi',
-  function (fbPagesApi) {
-    var config = fbPagesApi.config.get(function () {
-      (function(d, s, id, appId) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-          return;
-        }
-        js = d.createElement(s); js.id = id;
-        js.src = '//connect.facebook.net/en_US/all.js#xfbml=1&appId=' + appId;
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk', config.appId));
-    });
+app.run([  '$log', 'fbPagesApi',
+  function ($log,   fbPagesApi) {
+    try {
+      var config = fbPagesApi.config.get(function (a, b, c, d) {
+        (function(d, s, id, appId) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {
+            return;
+          }
+          js = d.createElement(s); js.id = id;
+          js.src = '//connect.facebook.net/en_US/all.js#xfbml=1&appId=' + appId;
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk', config.facebook.appId));
+      });
+    } catch (e) {
+      $log.warn('Facebook loaded, but not properly...');
+    }
   }
 ]);
 
@@ -47,6 +51,24 @@ app.run([  '$rootScope', 'fbPagesApi',
   angular.element('body').css('background-color', 'transparent');
 }]);
 
+//configure google analytics
+app.run([  '$log', 'fbPagesApi', 
+  function ($log,   fbPagesApi) {
+  var config = fbPagesApi.config.get(function () {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    try {
+      ga('create', config.google.analytics);
+      ga('send', 'pageview');
+    } catch (e) {
+      $log.error('could not load google analytics... ' + e.message);
+    }
+  });
+}]);
+
 app.config(
   [          '$stateProvider', '$urlRouterProvider',
     function ($stateProvider,   $urlRouterProvider) {
@@ -56,7 +78,7 @@ app.config(
       /////////////////////////////
 
       // // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
-      // $urlRouterProvider
+      $urlRouterProvider
 
       //   // The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
       //   // Here we are just setting up some convenience urls.
@@ -64,7 +86,7 @@ app.config(
       //   // .when('/user/:id', '/contacts/:id')
 
       //   // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
-      //   .otherwise('/');
+        .otherwise('/');
 
 
       //////////////////////////

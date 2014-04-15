@@ -53,7 +53,7 @@
 
 /* Supporting marketing content */
 .marketing {
-  margin: 40px 0;
+  margin: 0px 0;
 }
 .marketing p + h4 {
   margin-top: 28px;
@@ -80,4 +80,16 @@
 
 .fb-post {
   margin-bottom: 30px;
+}
+
+.fb-hours div {
+  padding: 5px;
+}
+
+.fb-comments {
+  margin-bottom: 0px;
+}
+
+.bootstrap-table-top-border {
+  border-top: 1px solid #dddddd;
 }
