@@ -62,15 +62,15 @@ describe('Service: fbApi', function() {
   });
 });
 
- describe('Service: fbApi', function() {
+describe('Service: fbApi', function() {
   var $httpBackend, service;
 
   beforeEach(module('fbPagesUiApp.services'));
   beforeEach(module('config'));
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($injector, _$httpBackend_, fbApi) {
-  	service = fbApi;
+  beforeEach(inject(function($injector, _$httpBackend_, appApi) {
+  	service = appApi;
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
 
@@ -80,16 +80,16 @@ describe('Service: fbApi', function() {
   }));
 
   // clean up
-  afterEach(function() {
+  afterEach(function () {
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should fetch the app config', function() {
+  it('should fetch the app config and check for required values', function() {
   	var config = service.config.get();
     expect(config.$resolved).toBeFalsy();
     $httpBackend.flush();
-    expect(config.facebook).toBeTruthy();
+    expect(config.facebook.appId).toBeTruthy();
+    expect(config.google.analytics.siteId).toBeTruthy();
   });
-
 });
