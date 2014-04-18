@@ -4,10 +4,10 @@
 var loader = angular.module('fbPagesUiLoader', []);
 
 //load facebook with configured appId
-loader.run([  '$log', 'fbPagesApi',
-  function ($log,   fbPagesApi) {
+loader.run([  '$log', 'appApi',
+  function ($log,      appApi) {
     try {
-      var config = fbPagesApi.config.get(function (a, b, c, d) {
+      var config = appApi.config.get(function (a, b, c, d) {
         (function(d, s, id, appId) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) {
@@ -24,17 +24,17 @@ loader.run([  '$log', 'fbPagesApi',
   }]);
 
 //fetch the background image
-loader.run([  '$rootScope', 'fbPagesApi',
-  function ($rootScope,   fbPagesApi) {
-  $rootScope.page = fbPagesApi.page.get();
+loader.run(['$rootScope', 'fbApi',
+  function ( $rootScope,   fbApi) {
+  $rootScope.page = fbApi.page.get();
   //reset bootstrap's background color...
   angular.element('body').css('background-color', 'transparent');
 }]);
 
 //configure google analytics
-loader.run([  '$log', 'fbPagesApi', 
-  function ($log,   fbPagesApi) {
-  var config = fbPagesApi.config.get(function () {
+loader.run([  '$log', 'appApi', 
+  function ($log,      appApi) {
+  var config = appApi.config.get(function () {
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('fbPagesUiApp.controllers', [])
-  .controller('MainCtrl', ['$scope', 'fbPagesApi', function ($scope, fbPagesApi) {
-    $scope.posts  = fbPagesApi.posts.get();
-    $scope.page   = fbPagesApi.page.get();
+  .controller('MainCtrl', ['$scope', 'fbApi', function ($scope, fbApi) {
+    $scope.posts  = fbApi.posts.get();
+    $scope.page   = fbApi.page.get();
 
     $scope.orderedPosts = {
         'high': [],

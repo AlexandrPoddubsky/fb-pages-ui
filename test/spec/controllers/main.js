@@ -82,73 +82,18 @@ describe('Controller: MainCtrl', function() {
       }
       ]
     };
+    
     $httpBackend.flush();
+    
     expect(scope.orderedPosts.high.length).toBe(5);
     expect(scope.orderedPosts.low.length).toBe(2);
-  })
+  });
+
+  it('should sort a real FB feed into high and low priority', function () {
+    $httpBackend.flush();
+    
+    expect(scope.orderedPosts.high.length).toBe(4); //note that two are not displayed on the page due to the ng-if in the HTML
+    expect(scope.orderedPosts.low.length).toBe(21);
+
+  });
 });
-
-// describe('Controller: MainCtrl', function () {
-
-//   // load the controller's module
-//   beforeEach(module('fbPagesUiApp'));
-
-//   describe('MainCtrl', function(){
-//     var $httpBackend, $rootScope, createController;
- 
-//     beforeEach(inject(function($injector) {
-//       // Set up the mock http service responses
-//       $httpBackend = $injector.get('$httpBackend');
-//       // backend definition common for all tests
-//       $httpBackend.when('GET', '/fb/posts').respond({userId: 'userX'}, {'A-Token': 'xxx'});
-//       $httpBackend.when('GET', '/config').respond({"facebook":{"appId":123},"google":{"analytics":{"siteId":"abc"}}});
-
-//       // Get hold of a scope (i.e. the root scope)
-//       $rootScope = $injector.get('$rootScope');
-//       // The $controller service is used to create instances of controllers
-//       var $controller = $injector.get('$controller');
-
-//       createController = function() {
-//         return $controller('MainCtrl', {'$scope' : $rootScope });
-//       };
-//     }));
-
-//     afterEach(function() {
-//       $httpBackend.verifyNoOutstandingExpectation();
-//       $httpBackend.verifyNoOutstandingRequest();
-//     });
- 
- 
-//     it('should pull required FB data from the back end on page load', function() {
-//       expect($rootScope.posts).toBeUndefined();
-//       var controller = createController();
-//       console.log(controller);
-//       expect($rootScope.posts.$resolved).toBeFalse();
-//       $httpBackend.flush();
-//       console.log($rootScope.posts);
-//       expect($rootScope.page.$resolved).toBeTrue();
- 
-//       //expect(scope.page).toEqualData([{name: 'test'}, {name: 'a page'}]);
-//     });
- 
- 
-//     // it('should set the default value of orderProp model', function() {
-//     //   expect(scope.orderProp).toBe('age');
-//     // });
-//   });
-
-//   // var MainCtrl,
-//   //   scope;
-
-//   // // Initialize the controller and a mock scope
-//   // beforeEach(inject(function ($controller, $rootScope) {
-//   //   scope = $rootScope.$new();
-//   //   MainCtrl = $controller('MainCtrl', {
-//   //     $scope: scope
-//   //   });
-//   // }));
-
-//   // it('should attach a list of awesomeThings to the scope', function () {
-//   //   expect(scope.posts.length).toBeGreaterThan(3);
-//   // });
-// });

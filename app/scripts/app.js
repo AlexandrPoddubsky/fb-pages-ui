@@ -76,9 +76,9 @@ app.config(
         .state('albums', {
           url: '/albums',
           templateUrl: 'views/albums.html', 
-          controller: ['$scope', '$stateParams', '$state', 'fbPagesApi',
-            function (  $scope,   $stateParams,   $state,   fbPagesApi) {
-              $scope.albums = fbPagesApi.albums.get();
+          controller: ['$scope', '$stateParams', '$state', 'fbApi',
+            function (  $scope,   $stateParams,   $state,   fbApi) {
+              $scope.albums = fbApi.albums.get();
               // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
 
               // $scope.edit = function () {
@@ -96,9 +96,9 @@ app.config(
           views: {
             'albumPhotos': {
               templateUrl: 'views/album-details.html',
-              controller: ['$scope', '$stateParams', '$state', 'fbPagesApi',
-                function (  $scope,   $stateParams,   $state,   fbPagesApi) {
-                  $scope.album = fbPagesApi.album.get({ 'albumId': $stateParams.albumId });
+              controller: ['$scope', '$stateParams', '$state', 'fbApi',
+                function (  $scope,   $stateParams,   $state,   fbApi) {
+                  $scope.album = fbApi.album.get({ 'albumId': $stateParams.albumId });
                   // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
 
                   // $scope.edit = function () {
