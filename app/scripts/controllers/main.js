@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('fbPagesUiApp')
-  .controller('MainCtrl', ['$scope', '$modal', 'fbPagesApi', function ($scope, $modal, fbPagesApi) {
+angular.module('fbPagesUiApp.controllers', [])
+  .controller('MainCtrl', ['$scope', 'fbPagesApi', function ($scope, fbPagesApi) {
     $scope.posts  = fbPagesApi.posts.get();
     $scope.page   = fbPagesApi.page.get();
 
@@ -18,7 +18,7 @@ angular.module('fbPagesUiApp')
         'high': [],
         'low': []
       };
-      
+
       angular.forEach($scope.posts.data, function(post, key) {
         if (post.type === 'status' || post.status_type === 'added_photos' || post.status_type === 'mobile_status_update') {
           this.high.push(post);

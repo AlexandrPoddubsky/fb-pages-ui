@@ -1,0 +1,58 @@
+{
+    "id": "159886885148",
+    "about": "The best little bike shop in the midwest!",
+    "can_post": false,
+    "category": "Outdoor gear/sporting goods",
+    "category_list": [
+        {
+            "id": "128003127270269",
+            "name": "Bike Shop"
+        }
+    ],
+    "checkins": 128,
+    "cover": {
+        "cover_id": "10150710848070149",
+        "offset_x": 0,
+        "offset_y": 0,
+        "source": "https://scontent-a.xx.fbcdn.net/hphotos-ash2/t1.0-9/s720x720/423775_10150710848070149_1434085844_n.jpg"
+    },
+    "description": "Independent and locally owned and operated, Grand Performance brings you the best of all kinds of fine bicycles and bicycling products. From newbies to enthusiasts, we are happy to get everyone properly fitted with the right bike for them. Come in and say hi!",
+    "has_added_app": false,
+    "hours": {
+        "mon_1_open": "10:00",
+        "mon_1_close": "19:00",
+        "tue_1_open": "10:00",
+        "tue_1_close": "19:00",
+        "wed_1_open": "10:00",
+        "wed_1_close": "19:00",
+        "thu_1_open": "10:00",
+        "thu_1_close": "19:00",
+        "fri_1_open": "10:00",
+        "fri_1_close": "19:00",
+        "sat_1_open": "10:00",
+        "sat_1_close": "17:00"
+    },
+    "is_community_page": false,
+    "is_published": true,
+    "likes": 819,
+    "link": "https://www.facebook.com/pages/Grand-Performance/159886885148",
+    "location": {
+        "city": "Saint Paul",
+        "country": "United States",
+        "latitude": 44.9399784269,
+        "longitude": -93.1822732282,
+        "state": "MN",
+        "street": "1938 Grand Avenue",
+        "zip": "55105"
+    },
+    "name": "Grand Performance",
+    "parking": {
+        "lot": 0,
+        "street": 1,
+        "valet": 0
+    },
+    "phone": "651.699.2640",
+    "talking_about_count": 28,
+    "website": "http://www.gpbicycles.com/",
+    "were_here_count": 128
+}

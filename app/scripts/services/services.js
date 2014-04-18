@@ -1,6 +1,6 @@
 'use strict';
 
-var serviceModule = angular.module('fbPagesUiApp.services', ['ngResource']);
+var serviceModule = angular.module('fbPagesUiApp.services', ['ngResource', 'config']);
 
 serviceModule.factory('fbPagesApi', ['$resource', 'ENV', function ($resource, ENV ) {
   return {

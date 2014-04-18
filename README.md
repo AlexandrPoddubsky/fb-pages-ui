@@ -13,6 +13,14 @@ cd fb-pages-ui
 edit Gruntfile.js to point to your API under the 'ngconstant' section.
 grunt serve
 ````
+Note that 'clean' environments will need to:
+````
+install nodejs (brew install node)
+npm install -g yo
+npm install
+bower install
+
+````
 
 TODO
 ------------------

@@ -1,0 +1,10 @@
+{
+    "facebook": {
+        "appId": 306514909486699
+    },
+    "google": {
+        "analytics": {
+            "siteId": "andrew"
+        }
+    }
+}
