@@ -48,3 +48,11 @@ loader.run([  '$log', 'appApi',
     }
   });
 }]);
+
+//add the custom FB pages (if any)
+//configure google analytics
+loader.run(['$rootScope', '$log', 'appApi', 
+  function ( $rootScope,   $log,   appApi) {
+  $rootScope.config = appApi.config.get();
+}]);
+

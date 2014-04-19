@@ -71,6 +71,19 @@ app.config(
         })
 
         ///////////
+        // FB Deep Link //
+        ///////////
+        .state('post', {
+          url: '/post/:pageId',
+          templateUrl: 'views/post.html', 
+          controller: ['$scope', '$stateParams', '$state', 'fbApi',
+            function (  $scope,   $stateParams,   $state,   fbApi) {
+              $scope.post = fbApi.post.get({ 'postId': $stateParams.pageId });
+            }
+          ]
+        })
+
+        ///////////
         // Photos //
         ///////////
         .state('albums', {

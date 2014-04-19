@@ -20,6 +20,7 @@ describe('Service: fbApi', function() {
     $httpBackend.when('GET', 'http://localhost:5000/fb/photos/uploaded').respond(getJSONFixture('photos_uploaded.json'));
     $httpBackend.when('GET', 'http://localhost:5000/fb/albums').respond(getJSONFixture('albums.json'));
     $httpBackend.when('GET', 'http://localhost:5000/fb/123/photos').respond(getJSONFixture('album_123_photos.json'));
+    $httpBackend.when('GET', 'http://localhost:5000/fb/post/123').respond(getJSONFixture('post_123.json'));
   }));
 
   // clean up
@@ -56,9 +57,15 @@ describe('Service: fbApi', function() {
   });
 
   it('should fetch information about a specific album', function () {
-  	var album = service.album.get({ albumId: 123 });
-  	$httpBackend.flush();
-  	expect(album.data.length).toBe(2);
+    var album = service.album.get({ albumId: 123 });
+    $httpBackend.flush();
+    expect(album.data.length).toBe(2);
+  });
+
+  it('should fetch information about a specific post', function () {
+    var post = service.post.get({ postId: 123 });
+    $httpBackend.flush();
+    expect(post.message).toBeTruthy();
   });
 });
 
@@ -87,9 +94,14 @@ describe('Service: fbApi', function() {
 
   it('should fetch the app config and check for required values', function() {
   	var config = service.config.get();
+    
     expect(config.$resolved).toBeFalsy();
+    
     $httpBackend.flush();
+    
     expect(config.facebook.appId).toBeTruthy();
     expect(config.google.analytics.siteId).toBeTruthy();
+
+    expect(config.facebook.pages.length).toBe(1);
   });
 });

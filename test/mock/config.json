@@ -1,6 +1,13 @@
 {
     "facebook": {
-        "appId": 306514909486699
+        "appId": 306514909486699,
+        "pages": [
+            {
+                "postId": "159886885148_10152360943365149",
+                "pageName": "Test Page",
+                "pageRoute": "testPage"
+            }
+        ]
     },
     "google": {
         "analytics": {
