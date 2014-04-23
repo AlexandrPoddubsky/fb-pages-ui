@@ -13,8 +13,8 @@ var app = angular.module('fbPagesUiApp', [
   'ui.router'
 ]);
 
-app.run([  '$rootScope', '$state', '$stateParams',
-  function ($rootScope,   $state,   $stateParams) {
+app.run([  '$rootScope', '$state', '$stateParams', '$window',
+  function ($rootScope,   $state,   $stateParams,   $window) {
 
   // It's very handy to add references to $state and $stateParams to the $rootScope
   // so that you can access them from any scope within your applications.For example,
@@ -22,6 +22,9 @@ app.run([  '$rootScope', '$state', '$stateParams',
   // 'contacts.list' or one of its decendents is active.
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
+
+  //make window available on root scope
+  $rootScope.window = $window;
 }]);
 
 app.config(
@@ -65,7 +68,7 @@ app.config(
           // For top level states, like this one, the parent template is
           // the index.html file. So this template will be inserted into the
           // ui-view within index.html.
-          templateUrl: '/views/main.html',
+          templateUrl: 'views/main.html',
           controller: 'MainCtrl'
 
         })

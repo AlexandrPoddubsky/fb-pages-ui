@@ -28,7 +28,8 @@ angular.module('fbPagesUiApp.controllers', [])
       }, $scope.orderedPosts);
     });
 
-  }])
-  .controller('GenericController', ['fbApi', function (fbApi) {
-    debugger;
+    $scope.hasComments = function (post) {
+      return (post.comments && post.comments.data.length > 0) || (post.caption && post.caption.length > 0);
+    }
+
   }]);

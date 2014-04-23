@@ -20,7 +20,8 @@ describe('Service: fbApi', function() {
     $httpBackend.when('GET', 'http://localhost:5000/fb/photos/uploaded').respond(getJSONFixture('photos_uploaded.json'));
     $httpBackend.when('GET', 'http://localhost:5000/fb/albums').respond(getJSONFixture('albums.json'));
     $httpBackend.when('GET', 'http://localhost:5000/fb/123/photos').respond(getJSONFixture('album_123_photos.json'));
-    $httpBackend.when('GET', 'http://localhost:5000/fb/post/123').respond(getJSONFixture('post_123.json'));
+    $httpBackend.when('GET', 'http://localhost:5000/fb/123').respond(getJSONFixture('post_123.json'));
+    $httpBackend.when('GET', 'http://localhost:5000/fb/234').respond(getJSONFixture('image_234.json'));
   }));
 
   // clean up
@@ -66,6 +67,12 @@ describe('Service: fbApi', function() {
     var post = service.post.get({ postId: 123 });
     $httpBackend.flush();
     expect(post.message).toBeTruthy();
+  });
+
+  it('should fetch information about a specific image', function () {
+    var image = service.image.get({ imageId: 234 });
+    $httpBackend.flush();
+    expect(image.images.length > 0).toBeTruthy();
   });
 });
 

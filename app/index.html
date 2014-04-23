@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="fbPagesUiApp" back-img="{{ page.cover.source }}"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="fbPagesUiApp" back-img="{{ page.cover.source }}"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="fbPagesUiApp" back-img="{{ page.cover.source }}"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="fbPagesUiApp" back-img="{{ page.cover.source }}"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="fbPagesUiApp" fb-back-img="{{ page.cover.source }}"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="fbPagesUiApp" fb-back-img="{{ page.cover.source }}"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="fbPagesUiApp" fb-back-img="{{ page.cover.source }}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="fbPagesUiApp" fb-back-img="{{ backgroundImages }}"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,12 +28,12 @@
     <div id="content-body">
       <div class="container">
         <div class="header">
-          <ul class="nav nav-pills pull-right">
-            <li class="{{ $state.current.name === 'home' ? 'active' : '' }}"><a ng-href="#" ui-sref="home">Home</a></li>
-            <li ng-repeat="page in config.facebook.pages"><a ng-href="#/post/{{page.postId}}">{{ page.pageName }}</a></li> 
+          <ul class="nav nav-pills {{ window.outerWidth > 768 ? 'pull-right' : '' }}">
+            <li class="{{ $state.current.name === 'home' ? 'active' : '' }}"><a ng-href="#/home">Home</a></li>
+            <li ng-repeat="page in config.facebook.pages" class="{{ $stateParams.pageId === page.postId ? 'active' : '' }}"><a ng-href="#/post/{{page.postId}}">{{ page.pageName }}</a></li> 
             <li class="{{ $state.current.name === 'albums' || $state.current.name === 'albums.detail' ? 'active' : '' }}"><a href="#/albums" ui-sref="albums">Images</a></li>
           </ul>
-          <h3 class="text-muted">{{ page.name }}</h3>
+          <h3 class="text-muted hidden-xs">{{ page.name }}</h3>
         </div>
     
         <div class="container-fluid" ui-view></div>

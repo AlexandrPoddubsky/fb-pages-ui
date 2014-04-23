@@ -1,43 +1,39 @@
-    <div class="jumbotron">
-      <h1>{{ page.name }}</h1>
-      <p class="lead">
-        {{ page.description }}
-      </p>
-      <div class="fb-like" data-href="{{ page.link }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-      <p>
-        <fb-hours></fb-hours>
-      </p>
-    </div>
+<div class="jumbotron">
+  <h1>{{ page.name }}</h1>
+  <p class="lead">
+    {{ page.description }}
+  </p>
+  <div class="fb-like" data-href="{{ page.link }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+  <p>
+    <fb-hours></fb-hours>
+  </p>
+</div>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row marketing">
-          <div ng-repeat="post in orderedPosts.high" ng-if="post.message && !post.story">
-            <fb-post-header post="post"></fb-post-header>
-            <div class="row">
-              <div class="col-xs-12 col-md-3">
-                <fb-post-image post="post"></fb-post-image>
-              </div>
-              <div class="col-xs-12 col-md-9">
-                <fb-post-comments post="post"></fb-post-comments>
-              </div>
-            </div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row marketing">
+      <div ng-repeat="post in orderedPosts.high" ng-if="post.message && !post.story">
+        <fb-post-header post="post"></fb-post-header>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <fb-post-image post="post"></fb-post-image>
           </div>
-        </div>
-        <div ng-repeat="post in orderedPosts.low">
-          <div class="row">
-            <div class="col-xs-12 col-md-12">
-              <fb-post-header post="post"></fb-post-header>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-md-3">
-              <fb-post-image post="post"></fb-post-image>
-            </div>
-            <div class="col-xs-12 col-md-9">
-              <fb-post-comments post="post"></fb-post-comments>
-            </div>
+          <div class="col-xs-12 col-sm-9">
+            <fb-post-comments post="post"></fb-post-comments>
           </div>
         </div>
       </div>
     </div>
+    <div ng-repeat="post in orderedPosts.low">
+      <fb-post-header post="post"></fb-post-header>
+      <div class="row">
+        <div class="col-xs-12 {{ hasComments(post) ? 'col-sm-3' : '' }}">
+          <fb-post-image post="post"></fb-post-image>
+        </div>
+        <div class=" {{ hasComments(post) ? 'col-xs-12 col-sm-9' : 'hidden-xs hidden-sm hidden-md hidden-lg' }}">
+          <fb-post-comments post="post"></fb-post-comments>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

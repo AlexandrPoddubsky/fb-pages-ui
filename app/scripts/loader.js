@@ -23,12 +23,20 @@ loader.run([  '$log', 'appApi',
     }
   }]);
 
-//fetch the background image
-loader.run(['$rootScope', 'fbApi',
-  function ( $rootScope,   fbApi) {
+//Load the page data into root scope
+loader.run(['$rootScope', 'fbApi', '$window', '$log',
+  function ( $rootScope,   fbApi,   $window,   $log) {
   $rootScope.page = fbApi.page.get();
-  //reset bootstrap's background color...
-  angular.element('body').css('background-color', 'transparent');
+
+  $rootScope.backgroundImage = {};
+
+  //fetch the background image
+  $rootScope.page.$promise.then(function () {
+    $rootScope.backgroundImages = fbApi.image.get({ imageId: $rootScope.page.cover.cover_id}, function () {
+      //reset bootstrap's background color...
+      angular.element('body').css('background-color', 'transparent');
+    });
+  });
 }]);
 
 //configure google analytics

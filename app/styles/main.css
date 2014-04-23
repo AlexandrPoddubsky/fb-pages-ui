@@ -12,10 +12,6 @@
   padding-right: 15px;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -35,6 +31,10 @@
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
+  }
+  /* Custom page header */
+  .header {
+    border-bottom: 1px solid #e5e5e5;
   }
 }
 .container-narrow > hr {
@@ -78,8 +78,13 @@
   }
 }
 
-.fb-post {
-  margin-bottom: 30px;
+@media screen and (max-width: 769px) {
+  .fb-image {
+    margin-bottom: 10px;
+  }
+  .fb-image div {
+    text-align: center;
+  }
 }
 
 .fb-hours div {
@@ -87,9 +92,25 @@
 }
 
 .fb-comments {
-  margin-bottom: 0px;
+  /* ... */
+}
+
+.fb-image {
+  /* ... */
+}
+
+.fb-header {
+  /* ... */
 }
 
 .bootstrap-table-top-border {
   border-top: 1px solid #dddddd;
+}
+
+.pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }

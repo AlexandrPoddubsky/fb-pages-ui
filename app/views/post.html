@@ -2,9 +2,21 @@
   <div class="container">
     <div class="panel panel-default">
       <div class="panel-body">
-        <p style="white-space: pre;">
-    	  {{ post.message }}
-    	</p>
+        <div class="row">
+          <div class="col-xs-12 col-md-10">
+            <p class="pre">{{ post.message  || post.story}}</p>
+            <small ng-if="post.likes.data.length > 0">
+            <span tooltip="{{ (post.likes.data.length > 0) ? 'likes' : '' }}">
+              <span class="badge">{{ post.likes.data.length }}</span>
+        	  </span>
+            <small ng-repeat="like in post.likes.data"> {{ like.name }} {{ $last ? '' : ', ' }} </small>
+            </small>
+            <fb-post-comments post="post"></fb-post-comments>
+            <a href="{{ post.link }}"><img src="{{ post.icon }}"/></a> <small>{{ post.updated_time | date: 'short' }}</small> 
+        </div>
+        <div class="col-md-2">
+          <fb-post-image post="post"></fb-post-image>
+        </div>
       </div>
     </div>
   </div>
