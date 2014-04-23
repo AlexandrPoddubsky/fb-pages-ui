@@ -2,12 +2,15 @@
 
 var directiveModule = angular.module('fbPagesUiApp.directives', []);
 
-directiveModule.directive('fbBackImg', ['$window', function ($window) {
-  var bgImages, element;
+directiveModule.directive('fbBackImg', ['$window', '$timeout', function ($window, $timeout) {
+  var bgImages,
+      element,
+      timeout,
+      onload=true;
 
   function setBackgroundImage (elem, imageUrl, width, height) {
     elem.css({
-      'background': 'url(' + imageUrl + ') no-repeat center center fixed', 
+      'background': 'url(' + imageUrl + ') no-repeat center center fixed',
       'background-size': '' + width + 'px ' + height + 'px',
       '-webkit-background-size': 'cover',
       '-moz-background-size': 'cover',
@@ -16,23 +19,38 @@ directiveModule.directive('fbBackImg', ['$window', function ($window) {
   }
 
   function findBackground (w, h, backgroundImages) {
-    console.log('in find background');
-    var matchingImage = {}; 
+    var matchingImage = {};
     //find the image that is just bigger than the current screen width
-    angular.forEach(backgroundImages.images, function (image, key) {
+    angular.forEach(backgroundImages.images, function (image) {
       if (image.height > h && image.width > w) { //the image is big enough
         //if we have no matches, or the current match is bigger than necessary, replace
         if (!this.source || (this.height > image.height && this.width > image.width)) {
           this.height = image.height;
           this.width = image.width;
           this.source = image.source;
-        } 
+        }
       }
     }, matchingImage);
     console.log('returning : ' + JSON.stringify(matchingImage));
 
     return matchingImage;
-  };
+  }
+
+  function updateImage () {
+    if (timeout) {
+      console.log('postpone');
+      $timeout.cancel(timeout);
+    }
+    timeout = $timeout(function () {
+      var image = findBackground($window.innerWidth, $window.innerHeight, bgImages);
+      setBackgroundImage(element, image.source, image.width, image.height);
+      timeout = null;
+    }, onload ? 0 : 200);
+
+    onload = false;
+    
+  }
+
   return {
     link: function (scope, elem, attrs) {
       attrs.$observe('fbBackImg', function (backgroundImages) {
@@ -41,15 +59,13 @@ directiveModule.directive('fbBackImg', ['$window', function ($window) {
 
         if (bgImages && bgImages.images && bgImages.images.length > 0) {
           //array of images loaded... safe to assign
-          var image = findBackground($window.innerWidth, $window.innerHeight, bgImages);
-          setBackgroundImage(element, image.source, image.width, image.height);
+          updateImage();
         }
       });
 
       var win = angular.element($window);
-        win.bind("resize", function (e) {
-          var image = findBackground($window.innerWidth, $window.innerHeight, bgImages);
-          setBackgroundImage(element, image.source, image.width, image.height);
+      win.bind('resize', function () {
+        updateImage();
       });
     }
   };

@@ -78,7 +78,7 @@ app.config(
         ///////////
         .state('post', {
           url: '/post/:pageId',
-          templateUrl: 'views/post.html', 
+          templateUrl: 'views/post.html',
           controller: ['$scope', '$stateParams', '$state', 'fbApi',
             function (  $scope,   $stateParams,   $state,   fbApi) {
               $scope.post = fbApi.post.get({ 'postId': $stateParams.pageId });
@@ -91,18 +91,27 @@ app.config(
         ///////////
         .state('albums', {
           url: '/albums',
-          templateUrl: 'views/albums.html', 
+          templateUrl: 'views/albums.html',
           controller: ['$scope', '$stateParams', '$state', 'fbApi',
             function (  $scope,   $stateParams,   $state,   fbApi) {
-              $scope.albums = fbApi.albums.get();
-              // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
+              
+              $scope.albums = fbApi.albums.get({}, function (albums) {
+                var mostRecientlyUpdatedAlbum = { albumId: null, updated: null };
 
-              // $scope.edit = function () {
-              //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
-              //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
-              //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
-              //   $state.go('.edit', $stateParams);
-              // };
+                //find the most reciently updated album and show it.
+                angular.forEach(albums.data, function (album) {
+                  /*jshint camelcase: false */
+                  var updated = new Date(album.updated_time);
+                  if (mostRecientlyUpdatedAlbum.updated === null || mostRecientlyUpdatedAlbum.updated_time < updated) {
+                    mostRecientlyUpdatedAlbum.albumId = album.id;
+                    mostRecientlyUpdatedAlbum.updated = updated;
+                  }
+                });
+
+                if (mostRecientlyUpdatedAlbum.albumId) {
+                  $state.go('albums.detail', { albumId: mostRecientlyUpdatedAlbum.albumId });
+                }
+              });
             }
           ]
         })
@@ -148,9 +157,10 @@ app.config(
                          '<li><a href="https://github.com/angular-ui/ui-router/wiki/Quick-Reference">API Reference</a></li>' +
                        '</ul>';
               }, 100);
-            }]
-          }
-        );
+            }
+          ]
+        }
+      );
     }
   ]
 );

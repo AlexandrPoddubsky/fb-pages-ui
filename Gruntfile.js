@@ -151,7 +151,7 @@ module.exports = function (grunt) {
     ngconstant: {
       options: {
         space: '  ',
-        wrap: '"use strict";\n\n {%= __ngModule %}',
+        wrap: '\'use strict\';\n/* jshint ignore:start */\n {%= __ngModule %}\n/* jshint ignore:end */',
         name: 'config'
       },
       // Environment targets

@@ -1,5 +1,5 @@
-"use strict";
-
+'use strict';
+/* jshint ignore:start */
  angular.module("config", [])
 
 .constant("ENV", {
@@ -8,3 +8,4 @@
 })
 
 ;
+/* jshint ignore:end */

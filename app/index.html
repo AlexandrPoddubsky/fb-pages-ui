@@ -37,13 +37,13 @@
         </div>
     
         <div class="container-fluid" ui-view></div>
-      </div>
-    </div>
 
-    <div class="footer">
-      <p>{{ page.phone }}</p>
-      <p>{{ page.location.street }}, {{ page.location.city }}, {{ page.location.state }}, {{ page.location.zip }}</p>
-      <p><a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">map</a></p>
+        <div class="footer">
+          <p>{{ page.phone }}</p>
+          <p>{{ page.location.street }}, {{ page.location.city }}, {{ page.location.state }}, {{ page.location.zip }}</p>
+          <p><a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">map</a></p>
+        </div>
+      </div>
     </div>
 
     <!--[if lt IE 9]>

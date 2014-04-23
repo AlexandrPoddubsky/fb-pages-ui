@@ -19,7 +19,8 @@ angular.module('fbPagesUiApp.controllers', [])
         'low': []
       };
 
-      angular.forEach($scope.posts.data, function(post, key) {
+      angular.forEach($scope.posts.data, function(post) {
+        /*jshint camelcase: false */
         if (post.type === 'status' || post.status_type === 'added_photos' || post.status_type === 'mobile_status_update') {
           this.high.push(post);
         } else {
@@ -30,6 +31,6 @@ angular.module('fbPagesUiApp.controllers', [])
 
     $scope.hasComments = function (post) {
       return (post.comments && post.comments.data.length > 0) || (post.caption && post.caption.length > 0);
-    }
+    };
 
   }]);
