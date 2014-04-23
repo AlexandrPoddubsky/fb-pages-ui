@@ -31,14 +31,12 @@ directiveModule.directive('fbBackImg', ['$window', '$timeout', function ($window
         }
       }
     }, matchingImage);
-    console.log('returning : ' + JSON.stringify(matchingImage));
-
+    
     return matchingImage;
   }
 
   function updateImage () {
     if (timeout) {
-      console.log('postpone');
       $timeout.cancel(timeout);
     }
     timeout = $timeout(function () {
