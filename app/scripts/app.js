@@ -30,7 +30,7 @@ app.run([  '$rootScope', '$state', '$stateParams', '$window',
 app.config(
   [          '$stateProvider', '$urlRouterProvider',
     function ($stateProvider,   $urlRouterProvider) {
-
+      var albums = {}; //local cache
       /////////////////////////////
       // Redirects and Otherwise //
       /////////////////////////////
@@ -123,15 +123,15 @@ app.config(
               templateUrl: 'views/album-details.html',
               controller: ['$scope', '$stateParams', '$state', 'fbApi',
                 function (  $scope,   $stateParams,   $state,   fbApi) {
-                  $scope.album = fbApi.album.get({ 'albumId': $stateParams.albumId });
-                  // $scope.item = utils.findById($scope.contact.items, $stateParams.itemId);
+                  $scope.carouselInterval = 5000;
 
-                  // $scope.edit = function () {
-                  //   // Here we show off go's ability to navigate to a relative state. Using '^' to go upwards
-                  //   // and '.' to go down, you can navigate to any relative state (ancestor or descendant).
-                  //   // Here we are going down to the child state 'edit' (full name of 'contacts.detail.item.edit')
-                  //   $state.go('.edit', $stateParams);
-                  // };
+                  //caching required to keep the last viewed item when switching between albums
+                  $scope.album = albums[$stateParams.albumId] ? albums[$stateParams.albumId] : fbApi.album.list({ 'albumId': $stateParams.albumId }, (function () {  
+                    var albumId = $stateParams.albumId; 
+                    return function (album) {
+                      albums[albumId] = album;
+                    };
+                  })());
                 }
               ]
             }

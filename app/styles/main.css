@@ -85,6 +85,9 @@
   .fb-image div {
     text-align: center;
   }
+  .header {
+    margin-bottom: 10px;
+  }
 }
 
 .fb-hours div {

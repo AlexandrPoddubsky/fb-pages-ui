@@ -1,5 +1,5 @@
-<carousel interval="myInterval">
-  <slide ng-repeat="image in album.data">
+<carousel interval="carouselInterval">
+  <slide ng-repeat="image in album.data" active="image.active">
     <img ng-src="{{image.source}}" style="margin:auto;">
     <div class="carousel-caption">
       <h4>{{ image.name }}</h4>
@@ -7,4 +7,3 @@
     </div>
   </slide>
 </carousel>
-<!-- fb-comments comments="post.comments.data"></fb-comments -->

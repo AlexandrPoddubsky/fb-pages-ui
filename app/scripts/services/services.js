@@ -10,7 +10,12 @@ serviceModule.factory('fbApi', ['$resource', 'ENV', function ($resource, ENV ) {
     page:    $resource(ENV.apiEndpoint + '/fb/'),
     photos:  $resource(ENV.apiEndpoint + '/fb/photos/uploaded'),
     albums:  $resource(ENV.apiEndpoint + '/fb/albums'),
-    album:   $resource(ENV.apiEndpoint + '/fb/:albumId/photos')
+    album:   $resource(ENV.apiEndpoint + '/fb/:albumId/photos', {}, {
+      list : {
+        method : 'GET',
+        cache : true
+      }
+    })
   };
 }]);
  

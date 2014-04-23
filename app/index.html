@@ -33,7 +33,7 @@
             <li ng-repeat="page in config.facebook.pages" class="{{ $stateParams.pageId === page.postId ? 'active' : '' }}"><a ng-href="#/post/{{page.postId}}">{{ page.pageName }}</a></li> 
             <li class="{{ $state.current.name === 'albums' || $state.current.name === 'albums.detail' ? 'active' : '' }}"><a href="#/albums" ui-sref="albums">Images</a></li>
           </ul>
-          <h3 class="text-muted hidden-xs">{{ page.name }}</h3>
+          <h3 class="text-muted"><span class="hidden-xs">{{ page.name }}</span></h3>
         </div>
     
         <div class="container-fluid" ui-view></div>
