@@ -76,6 +76,13 @@ directiveModule.directive('fbHours', function () {
   };
 });
 
+directiveModule.directive('fbHoursShort', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'views/templates/fbHoursShort.html'
+  };
+});
+
 directiveModule.directive('fbPostComments', function () {
   return {
     restrict: 'E',

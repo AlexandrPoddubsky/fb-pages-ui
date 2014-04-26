@@ -1,0 +1,9 @@
+<div class="fb-hours">
+  <div class="row h6 text-center">
+    <div style="display:inline-block;" class="text-center" ng-repeat="(hour, days) in hours">
+      {{ hour }}
+      <br/>
+      <span ng-repeat="day in days"> {{ day }}{{ !$last ? ', ' : '' }}</span>
+    </div>
+  </div>
+</div>
