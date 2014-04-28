@@ -57,4 +57,8 @@ angular.module('fbPagesUiApp.controllers', [])
       return (post.comments && post.comments.data.length > 0) || (post.caption && post.caption.length > 0);
     };
 
+    $scope.hasImage = function (post) {
+      return ((post.link && post.picture) || post.name || post.description);
+    };
+
   }]);

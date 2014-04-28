@@ -15,10 +15,10 @@
       <div class="row marketing">
           <fb-post-header post="post"></fb-post-header>
           <div class="row">
-            <div class="col-xs-12 col-sm-3">
+            <div ng-if="hasImage(post)" class="col-xs-12 {{ hasComments(post) ? 'col-sm-3' : '' }}">
               <fb-post-image post="post"></fb-post-image>
             </div>
-            <div class="col-xs-12 col-sm-9">
+            <div class="{{ hasComments(post) ? 'col-xs-12' + (hasImage(post) ? ' col-sm-9' : ' col-sm-12') : 'hidden-xs hidden-sm hidden-md hidden-lg' }}">
               <fb-post-comments post="post"></fb-post-comments>
             </div>
           </div>
@@ -34,10 +34,10 @@
       <div class="row marketing">
         <fb-post-header post="post"></fb-post-header>
         <div class="row">
-          <div class="col-xs-12 {{ hasComments(post) ? 'col-sm-3' : '' }}">
+          <div ng-if="hasImage(post)" class="col-xs-12 {{ hasComments(post) ? 'col-sm-3' : '' }}">
             <fb-post-image post="post"></fb-post-image>
           </div>
-          <div class=" {{ hasComments(post) ? 'col-xs-12 col-sm-9' : 'hidden-xs hidden-sm hidden-md hidden-lg' }}">
+          <div class="{{ hasComments(post) ? 'col-xs-12' + (hasImage(post) ? ' col-sm-9' : ' col-sm-12') : 'hidden-xs hidden-sm hidden-md hidden-lg' }}">
             <fb-post-comments post="post"></fb-post-comments>
           </div>
         </div>
