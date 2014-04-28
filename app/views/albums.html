@@ -3,9 +3,9 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="list-group">
-          <a ng-repeat="album in albums.data" ng-if="album.count > 0" class="list-group-item {{ ($stateParams.albumId === album.id) ? 'active' : '' }}" ui-sref="albums.detail({albumId: '{{ album.id }}'})">
+          <a ng-repeat="album in albums.data" ng-if="album.count > 0 && album.name != 'Profile Pictures' && album.name != 'Cover Photos'" class="list-group-item {{ ($stateParams.albumId === album.id) ? 'active' : '' }}" ui-sref="albums.detail({albumId: '{{ album.id }}'})">
             {{ album.name}}
-            ({{ album.count }} {{ album.count > 1 ? 'photos' : 'photo' }})  <small>last updated: {{ album.updated_time }}
+             <!-- ({{ album.count }} {{ album.count > 1 ? 'photos' : 'photo' }})  --> - <small>updated: {{ album.updated_time | date: short }}
           </a>
         </div>
 

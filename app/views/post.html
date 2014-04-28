@@ -5,21 +5,21 @@
         <div class="row">
           <div class="col-xs-12 {{ (post.story || post.icon) ? 'col-sm-10' : 'col-sm-12' }}">
             <p class="pre">{{ post.message  || post.story}}</p>
-            <small ng-if="post.likes.data.length > 0">
+            <small ng-if="preferences.post.likes && post.likes.data.length > 0">
               <span tooltip="{{ (post.likes.data.length > 0) ? 'likes' : '' }}">
                 <span class="badge">{{ post.likes.data.length }}</span>
           	  </span>
               <small ng-repeat="like in post.likes.data"> {{ like.name }} {{ $last ? '' : ', ' }} </small>
             </small>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" ng-if="preferences.post.image">
           <fb-post-image post="post"></fb-post-image>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <fb-post-comments post="post"></fb-post-comments>
-          <a href="{{ post.link }}"><img src="{{ post.icon }}"/></a> <small>{{ post.updated_time | date: 'short' }}</small> 
+          <fb-post-comments ng-if="preferences.post.comments" post="post"></fb-post-comments>
+          <a ng-if="preferences.post.updated" href="{{ post.link }}"><img src="{{ post.icon }}"/></a> <small ng-if="preferences.post.updated">{{ post.updated_time | date: 'short' }}</small> 
         </div>
       </div>
     </div>

@@ -79,9 +79,19 @@ app.config(
         .state('post', {
           url: '/post/:pageId',
           templateUrl: 'views/post.html',
-          controller: ['$scope', '$stateParams', '$state', 'fbApi',
-            function (  $scope,   $stateParams,   $state,   fbApi) {
+          controller: ['$scope', '$stateParams', '$state', 'fbApi', 'appApi',
+            function (  $scope,   $stateParams,   $state,   fbApi,   appApi) {
               $scope.post = fbApi.post.get({ 'postId': $stateParams.pageId });
+              $scope.preferences = {};
+
+              //get the configuration object for this post (if any)
+              var config = appApi.config.get({}, function () {
+                angular.forEach(config.facebook.pages, function (value) {
+                  if (value.postId === $stateParams.pageId) {
+                    this.post = value.displayPreferences.post;
+                  }
+                }, $scope.preferences);
+              });
             }
           ]
         })
