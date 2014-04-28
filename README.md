@@ -26,5 +26,6 @@ TODO
 ------------------
 Handle conditions where no server connection is available. Options include local storage, followed by default content to notify of the outage.
 Tests.
-Encapsulate post rendering in directive.
-Encapsulate like rendering in directive.
+Add testing to controllers defined in app.js.
+Move hour object formatting to hour directive.
+End to end testing.
