@@ -43,8 +43,8 @@ loader.run(['$rootScope', 'fbApi',
 }]);
 
 //configure google analytics
-loader.run([  '$log', 'appApi',
-  function ($log,      appApi) {
+loader.run(['$location', '$log', '$rootScope', 'appApi',
+  function ( $location,   $log,   $rootScope,   appApi) {
   var config = appApi.config.get(function () {
     /* jshint ignore:start */
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -53,8 +53,18 @@ loader.run([  '$log', 'appApi',
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     /* jshint ignore:end */
     try {
-      ga('create', config.google.analytics);
+      ga('create', config.google.analytics.siteId, {
+        'cookieDomain': 'none'
+      });
       ga('send', 'pageview');
+      
+      //state change event listener captures state changes and sends to Google.
+      $rootScope.$on('$stateChangeSuccess', function (event, toState) {
+        ga('send', 'pageview', {
+          'page': $location.path(),
+          'title': toState.name
+        });
+      });
     } catch (e) {
       $log.error('could not load google analytics... ' + e.message);
     }
@@ -62,7 +72,6 @@ loader.run([  '$log', 'appApi',
 }]);
 
 //add the custom FB pages (if any)
-//configure google analytics
 loader.run(['$rootScope', '$log', 'appApi',
   function ( $rootScope,   $log,   appApi) {
   $rootScope.config = appApi.config.get();

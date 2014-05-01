@@ -85,6 +85,7 @@ app.config(
               $scope.preferences = {};
 
               //get the configuration object for this post (if any)
+              //TODO consider moving this into a service to be called also from the loader.js to send more specific data to google analytics
               var config = appApi.config.get({}, function () {
                 angular.forEach(config.facebook.pages, function (value) {
                   if (value.postId === $stateParams.pageId) {
@@ -136,8 +137,8 @@ app.config(
                   $scope.carouselInterval = 5000;
 
                   //caching required to keep the last viewed item when switching between albums
-                  $scope.album = albums[$stateParams.albumId] ? albums[$stateParams.albumId] : fbApi.album.list({ 'albumId': $stateParams.albumId }, (function () {  
-                    var albumId = $stateParams.albumId; 
+                  $scope.album = albums[$stateParams.albumId] ? albums[$stateParams.albumId] : fbApi.album.list({ 'albumId': $stateParams.albumId }, (function () {
+                    var albumId = $stateParams.albumId;
                     return function (album) {
                       albums[albumId] = album;
                     };

@@ -49,7 +49,7 @@ angular.module('fbPagesUiApp.controllers', [])
             $scope.hours[open + ' - ' + close] = [];
           }
           $scope.hours[open + ' - ' + close].push(days[i]);
-        };
+        }
       });
     });
 
