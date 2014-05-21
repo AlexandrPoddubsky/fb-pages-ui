@@ -4,7 +4,7 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-12 {{ (post.story || post.icon) ? 'col-sm-10' : 'col-sm-12' }}">
-            <p class="pre">{{ post.message  || post.story}}</p>
+            <p btf-markdown="post.message  || post.story"></p>
             <small ng-if="preferences.post.likes && post.likes.data.length > 0">
               <span tooltip="{{ (post.likes.data.length > 0) ? 'likes' : '' }}">
                 <span class="badge">{{ post.likes.data.length }}</span>
