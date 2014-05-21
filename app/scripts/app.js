@@ -10,7 +10,8 @@ var app = angular.module('fbPagesUiApp', [
   'fbPagesUiApp.directives',
   'fbPagesUiApp.controllers',
   'ui.bootstrap',
-  'ui.router'
+  'ui.router',
+  'btford.markdown'
 ]);
 
 app.run([  '$rootScope', '$state', '$stateParams', '$window',
