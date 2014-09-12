@@ -1,3 +1,18 @@
+<div class="carousel">
+  <carousel interval="myInterval">
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <div class="carousel-caption half">
+        <h1>{{ slide.primaryText }}</h1>
+        <h2 ng-if="slide.secondaryText">{{ slide.secondaryText }}</h2>
+        <p>{{ slide.tertiaryText }}</p>
+      </div>
+      <div class="half">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+      </div>
+    </slide>
+  </carousel>
+</div>
+
 <div class="jumbotron">
   <h1>{{ page.name }}</h1>
   <p class="lead">

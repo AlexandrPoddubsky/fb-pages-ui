@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="fbPagesUiApp" fb-back-img="{{ page.cover.source }}"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="fbPagesUiApp" fb-back-img="{{ page.cover.source }}"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="fbPagesUiApp" fb-back-img="{{ page.cover.source }}"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="fbPagesUiApp" fb-back-img="{{ backgroundImages }}"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="fbPagesUiApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="fbPagesUiApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="fbPagesUiApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="fbPagesUiApp"> <!--<![endif]--><!-- fb-back-img="{{ backgroundImages }}" -->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,19 +24,47 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div id="content-body">
-      <div class="container">
-        <div class="header">
-          <ul class="nav nav-pills {{ window.outerWidth > 768 ? 'pull-right' : '' }}">
+    
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="row" style="background-color: #006b33; height:10px"></div>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/#" style="margin-left: 10px"><img src="images/logo.png" alt="{{ page.name }}"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
             <li class="{{ $state.current.name === 'home' ? 'active' : '' }}"><a ng-href="#/home">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bikes <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
             <li ng-repeat="page in config.facebook.pages" class="{{ $stateParams.pageId === page.postId ? 'active' : '' }}"><a ng-href="#/post/{{page.postId}}">{{ page.pageName }}</a></li> 
             <li class="{{ $state.current.name === 'albums' || $state.current.name === 'albums.detail' ? 'active' : '' }}"><a href="#/albums" ui-sref="albums">Images</a></li>
           </ul>
-          <h3 class="text-muted"><span class="hidden-xs">{{ page.name }}</span></h3>
-        </div>
+        </div><!--/.nav-collapse -->
+      </div>
+      <div class="row" style="background-color: #fe0000; height:10px"></div>
+    </div>
+
+    <div id="content-body">
+      <div class="container-fluid">
     
-        <div class="container-fluid" ui-view></div>
+        <div ui-view></div>
 
         <div class="footer">
           <p>{{ page.phone }}</p>
@@ -60,7 +88,6 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/showdown/compressed/showdown.js"></script>
     <script src="bower_components/angular-markdown-directive/markdown.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
