@@ -4,7 +4,7 @@
 
 .constant("ENV", {
   "name": "development",
-  "apiEndpoint": "http://localhost:5000"
+  "apiEndpoint": "http://www.gpbicycles.com"
 })
 
 ;

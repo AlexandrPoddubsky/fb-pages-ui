@@ -21,6 +21,9 @@ angular.module('fbPagesUiApp.controllers', [])
       };
 
       angular.forEach($scope.posts.data, function(post) {
+        if (!post.message && !post.name && !post.description) {
+          return;
+        }
         /*jshint camelcase: false */
         if (post.type === 'status' || post.status_type === 'added_photos' || post.status_type === 'mobile_status_update') {
           this.high.push(post);
@@ -60,22 +63,5 @@ angular.module('fbPagesUiApp.controllers', [])
     $scope.hasImage = function (post) {
       return ((post.link && post.picture) || post.name || post.description);
     };
-
-    $scope.myInterval = 5000000;
-    var slides = $scope.slides = [];
-    $scope.addSlide = function(img, primaryText, secondaryText, tertiaryText) {
-      slides.push({
-        image: img,
-        primaryText: primaryText,
-        secondaryText: secondaryText,
-        tertiaryText: tertiaryText
-      });
-    };
-    for (var i=0; i<4; i++) {
-      $scope.addSlide('/images/slide/shop.jpg', 'Grand Performance', '(651) 699-2640 info@gpbicycles.com', 'Independent and locally owned and operated, Grand Performance brings you the best of all kinds of fine bicycles and bicycling products. From newbies to enthusiasts, we are happy to get everyone properly fitted with the right bike for them. Come in and say hi!');
-      $scope.addSlide('/images/slide/tools.jpg');
-      $scope.addSlide('/images/slide/usa.jpg');
-      $scope.addSlide('/images/slide/shop-side.jpg');
-    }
 
   }]);

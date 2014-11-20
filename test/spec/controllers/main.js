@@ -1,3 +1,4 @@
+/* global getJSONFixture */
 'use strict';
 
 describe('Controller: MainCtrl', function() {
@@ -9,7 +10,7 @@ describe('Controller: MainCtrl', function() {
   beforeEach(module('config'));
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller, $injector, _$httpBackend_) {
+  beforeEach(inject(function($controller, $injector) {
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
 
@@ -28,10 +29,9 @@ describe('Controller: MainCtrl', function() {
 
   // clean up
   afterEach(function() {
-     $httpBackend.verifyNoOutstandingExpectation();
-     $httpBackend.verifyNoOutstandingRequest();
-   });
-
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
+  });
 
   //ok, let;s not spend time testing angular with the $resolved tests...
   it('should attach a list of posts to the scope', function() {
@@ -46,7 +46,7 @@ describe('Controller: MainCtrl', function() {
   it('should create a high and low priority object for posts to resolve into', function () {
     expect(scope.orderedPosts.high.length).toBe(0);
     expect(scope.orderedPosts.low.length).toBe(0);
-    $httpBackend.flush()
+    $httpBackend.flush();
   });
 
   //is the FB data pushing posts into the right buckets?
@@ -76,7 +76,7 @@ describe('Controller: MainCtrl', function() {
       { //low
         'type': '',
         'status_type': ''
-      }, 
+      },
       { //low
         //...
       }

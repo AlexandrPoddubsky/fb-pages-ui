@@ -1,4 +1,5 @@
- 'use strict';
+/* global getJSONFixture */
+'use strict';
 
 describe('Service: fbApi', function() {
   var $httpBackend, service;
@@ -7,8 +8,8 @@ describe('Service: fbApi', function() {
   beforeEach(module('config'));
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($injector, _$httpBackend_, fbApi) {
-  	service = fbApi;
+  beforeEach(inject(function($injector, fbApi) {
+    service = fbApi;
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
 
@@ -31,14 +32,14 @@ describe('Service: fbApi', function() {
   });
 
   it('should fetch a list of posts', function() {
-  	var posts = service.posts.get();
+    var posts = service.posts.get();
     expect(posts.$resolved).toBeFalsy();
     $httpBackend.flush();
     expect(posts.data.length).toBe(25);
   });
 
   it('should fetch information about the page', function() {
-  	var page = service.page.get();
+    var page = service.page.get();
     expect(page.$resolved).toBeFalsy();
     $httpBackend.flush();
     expect(page.about).toBeTruthy();
@@ -46,15 +47,15 @@ describe('Service: fbApi', function() {
   });
 
   it('should fetch a list of uploaded posts', function () {
-  	var uploadedPhotos = service.photos.get();
-  	$httpBackend.flush();
-  	expect(uploadedPhotos.data.length).toBe(7);
+    var uploadedPhotos = service.photos.get();
+    $httpBackend.flush();
+    expect(uploadedPhotos.data.length).toBe(7);
   });
 
   it('should fetch a list of albums', function () {
-  	var albums = service.albums.get();
-  	$httpBackend.flush();
-  	expect(albums.data.length).toBe(6);
+    var albums = service.albums.get();
+    $httpBackend.flush();
+    expect(albums.data.length).toBe(6);
   });
 
   it('should fetch information about a specific album', function () {
@@ -83,8 +84,8 @@ describe('Service: fbApi', function() {
   beforeEach(module('config'));
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($injector, _$httpBackend_, appApi) {
-  	service = appApi;
+  beforeEach(inject(function($injector, appApi) {
+    service = appApi;
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
 
@@ -100,7 +101,7 @@ describe('Service: fbApi', function() {
   });
 
   it('should fetch the app config and check for required values', function() {
-  	var config = service.config.get();
+    var config = service.config.get();
     
     expect(config.$resolved).toBeFalsy();
     

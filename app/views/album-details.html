@@ -1,9 +1,30 @@
-<carousel interval="carouselInterval">
-  <slide ng-repeat="image in album.data" active="image.active">
-    <img ng-src="{{image.source}}" style="margin:auto;">
-    <div class="carousel-caption">
-      <h4>{{ image.name }}</h4>
-      <p>{{ (image.likes.data.length > 0) ? 'likes' : '' }} {{ image.likes.data.length }}</p>
+{{ album }}
+<div ng-repeat="image in album.data" class="item {{ image.active ? 'active':'' }}">
+      <img src="{{image.source}}" alt="...">
+      <div class="carousel-caption">
+        <h4>{{ image.name }}</h4>
+        <p>{{ (image.likes.data.length > 0) ? 'likes' : '' }} {{ image.likes.data.length }}</p>
+      </div>
     </div>
-  </slide>
-</carousel>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div ng-repeat="image in album.data" class="item {{ image.active ? 'active':'' }}">
+      <img src="{{image.source}}" alt="...">
+      <div class="carousel-caption">
+        <h4>{{ image.name }}</h4>
+        <p>{{ (image.likes.data.length > 0) ? 'likes' : '' }} {{ image.likes.data.length }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

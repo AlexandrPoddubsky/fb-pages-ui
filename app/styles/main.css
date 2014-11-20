@@ -1,231 +1,25 @@
-/* Space out content a bit */
-#content-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    /* max-width: 730px; */
-  }
-  /* Custom page header */
-  .header {
-    border-bottom: 1px solid #e5e5e5;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 0px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-
-@media screen and (max-width: 769px) {
-  .fb-image {
-    margin-bottom: 10px;
-  }
-  .fb-image div {
-    text-align: center;
-  }
-  .header {
-    margin-bottom: 10px;
-  }
-  .carousel-inner img {
+@media screen and (min-width: 320px) and (max-width: 480px), (min-device-width: 320px) and
+(max-device-width: 480px) and (orientation : landscape) {
+  .menu-large-screen {
     display: none;
   }
+  .menu-small-screen {
+    display: inline;
+  }
 }
 
-.fb-hours div {
-  padding: 5px;
+footer {
+  margin-top: 20px;
 }
 
-.fb-comments {
-  /* ... */
+@media (max-width: 992px) and (min-width: 767px) {
+  .page.featurette-heading {
+    margin-top: 120px;
+  }
 }
 
-.fb-image {
-  /* ... */
-}
-
-.fb-image img {
-  max-width: 100%;
-}
-
-.fb-header {
-  /* ... */
-}
-
-.fb-post {
-  /* ... */
-}
-
-.bootstrap-table-top-border {
-  border-top: 1px solid #dddddd;
-}
-
-.pre {
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
-}
-
-.navbar .navbar-header {
-  height: 95px;
-}
-
-.nav {
-  padding-top: 22px;
-}
-
-.carousel {
-  height: 420px;
-  background-image: url(http://127.0.0.1:9000/images/slide-bg.png);
-  background-position-x: 50%;
-  background-position-y: 100%;
-  background-size: initial;
-  background-repeat-x: no-repeat;
-  background-repeat-y: no-repeat;
-  background-attachment: initial;
-  background-origin: initial;
-  background-clip: initial;
-  background-color: initial;
-  margin-bottom: 30px;
-}
-
-/* carousel overrides */
-.carousel .carousel-control {
-  background-image: none;
-}
-
-.carousel-caption {
-  position: initial;
-  color: #888;
-}
-
-.carousel .half {
-  float: left;
-  width: 50%;
-}
-
-.carousel-indicators {
-  display: none;
-}
-
-.carousel-inner {
-  min-height: 400px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.carousel-inner img {
-  float: right;
-  border-radius: 12px;
-  border: 6px solid gray;
-  margin-top: 80px;
-  max-width:100%; 
-  height:auto;
-}
-
-.carousel-caption {
-  text-shadow: none;
-  text-align: left;
-  color: #888;
-  font-size: 18px;
-  line-height: 24px;
-  padding-bottom: 40px;
-  font-weight: 400
-}
-
-.carousel-caption h1 {
-  font-size: 50px;
-  text-transform: capitalize;
-  margin-bottom: 30px;
-  color:#555;
-  font-weight:200;
-}
-
-.carousel-caption h2 {
-  font-size: 30px;
-  font-weight: 300;
-  color: #444;
-  margin: 30px 0;
-}
-
-.carousel-caption p {
-  color: #888;
-  font-size: 18px;
-  line-height: 24px;
-  padding-bottom: 40px;
-  font-weight: 400;
-}
-
-.carousel-control .icon-next {
-  right: 20px;
-  color: #000;
-}
-
-.carousel-control .icon-prev {
-  left: 20px;
-  color: #000;
+@media (max-width: 767px) {
+  .page.featurette-heading {
+    margin-top: 80px;
+  }
 }

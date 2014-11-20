@@ -56,10 +56,9 @@
             <div id="navbar" class="navbar-collapse collapse">
 
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/services">Service</a></li>
-                <li><a href="#/bikes">Bikes</a></li>
-                <li><a href="mailto:info@gpbicycles.com ">Contact</a></li>
-                <li><a href="#/albums">Photos</a></li>
+                <li><a href="#about">Service</a></li>
+                <li><a href="#contact">Bikes</a></li>
+                <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -117,10 +116,10 @@
       <footer>
         <div class="row">
           <div class="col-md-4 col-sm-12 text-center">
-            <a href="mailto:info@gpbicycles.com">info@gpbicycels.com</a> &middot; {{ page.phone }}
+            <a href="mailto:info@gpbicycles.com">info@gpbicycels.com</a> {{ page.phone }} <a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">map</a>
           </div>
           <div class="col-md-4 col-sm-12 text-center">
-            <a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">{{ page.location.street }} &middot; {{ page.location.city }} &middot;  {{ page.location.state }} &middot;  {{ page.location.zip }}</a>
+            {{ page.location.street }} &middot;  {{ page.location.city }} &middot;  {{ page.location.state }} &middot;  {{ page.location.zip }}
           </div>
           <div class="col-md-4 col-sm-12 text-center">
             &copy; 2014 {{ page.name }}, Inc. 
@@ -143,14 +142,11 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-markdown-directive/markdown.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

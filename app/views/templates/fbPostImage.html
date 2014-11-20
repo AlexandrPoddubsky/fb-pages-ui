@@ -1,11 +1,1 @@
-<div class="fb-image">
-  <div class="h5">
-    {{ post.name }}
-  </div>
-  <div>
-    <a href="{{ post.link }}"><img src="{{ post.picture }}"/></a>
-  </div>
-  <div class="h6">
-    {{ post.description }}
-  </div>
-</div>
+<a href="{{ post.link ? post.link : 'https://www.facebook.com/pages/Grand-Performance/159886885148' }}"><img class="img-circle" src="{{ post.picture || 'images/logo-no-fb.png' }}" alt="Generic placeholder image" style="width: 140px; height: 140px;"></a>

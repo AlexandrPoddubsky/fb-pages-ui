@@ -1,18 +1,26 @@
-<div id="content-body">
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="list-group">
-          <a ng-repeat="album in albums.data" ng-if="album.count > 0 && album.name != 'Profile Pictures' && album.name != 'Cover Photos'" class="list-group-item {{ ($stateParams.albumId === album.id) ? 'active' : '' }}" ui-sref="albums.detail({albumId: '{{ album.id }}'})">
-            {{ album.name}}
-             <!-- ({{ album.count }} {{ album.count > 1 ? 'photos' : 'photo' }})  --> - <small>updated: {{ album.updated_time | date: short }}
-          </a>
-        </div>
-
-        <!-- named view for album display -->
-        <div ui-view="albumPhotos" class="slide" id="imageCarousel"></div>
-
+<div class="container marketing">
+  <div class="row featurette">
+    <div class="col-xs-12">
+      <h2 class="page featurette-heading">Photo Albums <span class="text-muted">proud to be part of the community</span></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="lead">Check out some of the pictures we've snapped - people, travel, rides and gear, it's an ecletic mix. You never know, you might see a friend in one of the albums!</p>
+    </div>
+    <div class="col-md-6">
+      <div class="list-group">
+        <!-- <a ng-repeat="album in albums.data" ng-if="album.count > 0 && album.name != 'Profile Pictures' && album.name != 'Cover Photos'" class="list-group-item {{ ($stateParams.albumId === album.id) ? 'active' : '' }}" ui-sref="albums.detail({albumId: '{{ album.id }}'})"> -->
+        <a ng-repeat="album in albums.data" ng-if="album.count > 0 && album.name != 'Profile Pictures' && album.name != 'Cover Photos'" class="list-group-item {{ ($stateParams.albumId === album.id) ? 'active' : '' }}" href="{{ album.link }}">
+          {{ album.name}} - <small>updated: {{ album.updated_time | date: short }}</small>
+        </a>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- named view for album display -->
+      <!-- <div ui-view="albumPhotos" class="slide" id="imageCarousel"></div> -->
     </div>
   </div>
 </div>
