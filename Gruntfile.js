@@ -288,6 +288,7 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
+            'images/{,*/}*',
             'fonts/*'
           ]
         }, {
@@ -315,7 +316,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'copy:styles',
-        'imagemin',
+        // 'imagemin',
         'svgmin'
       ]
     },

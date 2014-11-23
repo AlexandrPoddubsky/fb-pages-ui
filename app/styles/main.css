@@ -23,3 +23,12 @@ footer {
     margin-top: 80px;
   }
 }
+
+body {
+  position: relative;
+}
+
+#nav-wrapper.affix {
+top: 0;
+width: 100%
+}
