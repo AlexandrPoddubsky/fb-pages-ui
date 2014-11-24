@@ -34,16 +34,16 @@ angular.module('fbPagesUiApp.controllers', [])
 
       //tighten up hours - could see different hour directives each site could use 
       $scope.page.$promise.then( function () {
-        var days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
+        var days = [['mon', 'Monday'], ['tue', 'Tuesday'], ['wed', 'Wednesday'], ['thu', 'Thursday'], ['fri', 'Friday'], ['sat', 'Saturday'], ['sun', 'Sunday']],
             open,
             close;
 
         for (var i = 0; i < days.length; i++) {
-          if ($scope.page.hours[days[i] + '_1_open'] === undefined || $scope.page.hours[days[i] + '_1_close'] === undefined) {
+          if ($scope.page.hours[days[i][0] + '_1_open'] === undefined || $scope.page.hours[days[i][0] + '_1_close'] === undefined) {
             continue;
           }
-          open = $scope.page.hours[days[i] + '_1_open'].split(':');
-          close = $scope.page.hours[days[i] + '_1_close'].split(':');
+          open = $scope.page.hours[days[i][0] + '_1_open'].split(':');
+          close = $scope.page.hours[days[i][0] + '_1_close'].split(':');
           
           open = open[0] > 12 ? open[0] - 12 + ':' + open[1] + ' pm' : open[0] + ':' + open[1] + ' am';
           close = close[0] > 12 ? close[0] - 12 + ':' + close[1] + ' pm' : close[0] + ':' + close[1] + ' am';
@@ -51,7 +51,7 @@ angular.module('fbPagesUiApp.controllers', [])
           if (!$scope.hours[open + ' - ' + close]) {
             $scope.hours[open + ' - ' + close] = [];
           }
-          $scope.hours[open + ' - ' + close].push(days[i]);
+          $scope.hours[open + ' - ' + close].push(days[i][1]);
         }
       });
     });

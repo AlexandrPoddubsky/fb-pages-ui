@@ -9,7 +9,7 @@
 </h4>
 
 <h5>
-  <a href="{{ post.link }}"><img src="{{ post.icon }}"/></a> 
+  <a href="{{ post.link }}"><img ng-src="{{ post.icon }}"/></a> 
   <small>
     {{ post.updated_time | date: 'short' }}
     <span class="text-muted" ng-if="post.likes.data.length > 0">
