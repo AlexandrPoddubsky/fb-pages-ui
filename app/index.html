@@ -69,50 +69,9 @@
       </div>
     </div>
 
-
-
     <div ui-view></div>
 
     <div class="container marketing">
-      <!-- <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div> -->
-
-      
-
-      <!-- /END THE FEATURETTES -->
-
-
       <!-- FOOTER -->
       <div id="fb-root"></div>
       <footer>
@@ -122,13 +81,14 @@
           </div>
           <div class="col-md-4 col-sm-12 text-center">
             <a href="https://www.google.com/maps/@{{ page.location.latitude }},{{ page.location.longitude }},18z">{{ page.location.street }} &middot; {{ page.location.city }} &middot;  {{ page.location.state }} &middot;  {{ page.location.zip }}</a>
+            <br/>
+            &copy; 2014 {{ page.name }}, Inc. 
           </div>
           <div class="col-md-4 col-sm-12 text-center">
-            &copy; 2014 {{ page.name }}, Inc. 
+            <fb-hours-short></fb-hours-short>
           </div>
         </div>
       </footer>
-
     </div><!-- /.container -->
 
 
