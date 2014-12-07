@@ -12,23 +12,11 @@ footer {
   margin-top: 20px;
 }
 
-@media (max-width: 992px) and (min-width: 767px) {
-  .page.featurette-heading {
-    margin-top: 120px;
-  }
-}
-
-@media (max-width: 767px) {
-  .page.featurette-heading {
-    margin-top: 80px;
-  }
-}
-
 body {
   position: relative;
 }
 
 #nav-wrapper.affix {
-top: 0;
-width: 100%
+  top: 0;
+  width: 100%;
 }

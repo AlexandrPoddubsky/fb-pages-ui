@@ -53,11 +53,11 @@
         </div>
         <div id="navbar" class="navbar-collapse navbar-right collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#/services">Service</a></li>
-            <li><a href="#/bikes">Bikes</a></li>
-            <li><a href="#/albums">Photos</a></li>
-            <li><a href="#/routes">Rides</a></li>
+            <li class="{{ $state.current.name === 'home' ? 'active' : '' }}"><a href="#/">Home</a></li>
+            <li class="{{ $state.current.name === 'services' ? 'active' : '' }}"><a href="#/services">Service</a></li>
+            <li class="{{ $state.current.name === 'bikes' ? 'active' : '' }}"><a href="#/bikes">Bikes</a></li>
+            <li class="{{ $state.current.name.indexOf('albums')>-1 ? 'active' : '' }}"><a href="#/albums">Photos</a></li>
+            <li class="{{ $state.current.name === 'routes' ? 'active' : '' }}"><a href="#/routes">Rides</a></li>
             <li><a href="mailto:info@gpbicycles.com ">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->

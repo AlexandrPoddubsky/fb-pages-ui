@@ -126,9 +126,3 @@ body {
     font-size: 50px;
   }
 }
-
-@media (min-width: 992px) {
-  .noimg-header {
-    margin-top: 120px;
-  }
-}

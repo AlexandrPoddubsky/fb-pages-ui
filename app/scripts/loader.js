@@ -98,4 +98,3 @@ loader.run(['$rootScope', '$log', 'appApi',
   function ( $rootScope,   $log,   appApi) {
   $rootScope.config = appApi.config.get();
 }]);
-
