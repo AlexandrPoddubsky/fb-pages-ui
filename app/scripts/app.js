@@ -177,6 +177,16 @@ app.config(
             url: '/routes',
             templateUrl: 'views/routes.html'
           }
+        )
+
+        ///////////
+        // Contact //
+        ///////////
+
+        .state('contact', {
+            url: '/contact',
+            templateUrl: 'views/contact.html'
+          }
         );
     }
   ]
