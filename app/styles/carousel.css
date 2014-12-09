@@ -54,12 +54,54 @@ body {
 }
 .carousel-inner > .item > img {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   min-width: 100%;
-  height: 500px;
+}
+@media (min-width: 768px) {
+    .carousel {
+      height: 400px;
+    }
+    .carousel .item {
+      height: 400px;
+    }  
+}
+@media screen and (max-width: 320px), (min-device-width: 320px) and (max-device-width: 480px) and (orientation : portrait) {
+    .carousel {
+      height: 150px;
+    }
+    .carousel .item {
+      height: 150px;
+    }  
+}
+@media screen and (min-width: 320px) and (max-width: 480px), (min-device-width: 320px) and
+(max-device-width: 480px) and (orientation : landscape) {
+    .carousel {
+      height: 250px;
+    }
+    .carousel .item {
+      height: 250px;
+    }  
+}
+@media screen and (max-width: 320px), (min-device-width: 320px) and (max-device-width: 568px) and (orientation : portrait) {
+    .carousel {
+      height: 150px;
+    }
+    .carousel .item {
+      height: 150px;
+    }  
 }
 
+
+@media screen and (min-width: 360px) and (max-width: 640px), (min-device-width: 360px) and
+(max-device-width: 640px) and (orientation : landscape) {
+    .carousel {
+      height: 180px;
+    }
+    .carousel .item {
+      height: 180px;
+    } 
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */

@@ -1,3 +1,10 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="images/photos-page-dan.jpg" alt="Complete service for your bike">
+    </div>
+  </div>
+</div><!-- /.carousel -->
 
 <div class="photoPage">
   <div class="row featurette">
@@ -26,17 +33,17 @@
   </div>
 </div>
 <script language="JavaScript">
-function sizeAlbums(height) {
-  document.getElementsByClassName('photoPage')[0].style.height   = height + 'px';
-  getElementById('div_register').setAttribute('style', 'height:' + height + 'px');
-}
-function getHeight() {
-  var header = document.getElementsByClassName('navbar')[0];
-  var footer = document.getElementsByTagName('footer')[0];
-  return window.innerHeight - header.clientHeight - footer.clientHeight -87;
-}
-window.onresize = function(event) {
-    sizeAlbums(getHeight());
-};
-setTimeout(function () { sizeAlbums(getHeight()); }, 500);
+// function sizeAlbums(height) {
+//   document.getElementsByClassName('photoPage')[0].style.height   = height + 'px';
+//   getElementById('div_register').setAttribute('style', 'height:' + height + 'px');
+// }
+// function getHeight() {
+//   var header = document.getElementsByClassName('navbar')[0];
+//   var footer = document.getElementsByTagName('footer')[0];
+//   return window.innerHeight - header.clientHeight - footer.clientHeight -87;
+// }
+// window.onresize = function(event) {
+//     sizeAlbums(getHeight());
+// };
+// setTimeout(function () { sizeAlbums(getHeight()); }, 500);
 </script>
