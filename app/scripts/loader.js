@@ -56,12 +56,12 @@ loader.run(['$rootScope', 'fbApi',
         }
         $rootScope.hours[open + ' - ' + close].push(days[i][1]);
       }
-    /*jshint camelcase: false */
-    $rootScope.backgroundImages = fbApi.image.get({ imageId: $rootScope.page.cover.cover_id}, function () {
-      //reset bootstrap's background color...
-      angular.element('body').css('background-color', 'transparent');
+    // /*jshint camelcase: false */
+    // $rootScope.backgroundImages = fbApi.image.get({ imageId: $rootScope.page.cover.cover_id}, function () {
+    //   //reset bootstrap's background color...
+    //   angular.element('body').css('background-color', 'transparent');
+    // });
     });
-  });
 }]);
 
 //configure google analytics

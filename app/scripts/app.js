@@ -185,7 +185,63 @@ app.config(
 
         .state('contact', {
             url: '/contact',
-            templateUrl: 'views/contact.html'
+            templateUrl: 'views/contact.html',
+            controller: [function () {
+              /* global google */
+              function makeMyMap() {
+                var position = new google.maps.LatLng(44.939914, -93.182111);
+                var myOptions = {
+                  zoom: 14,
+                  center: position,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(
+                  document.getElementById('map_canvas'),
+                  myOptions);
+
+                var marker = new google.maps.Marker({
+                  position: position,
+                  map: map,
+                  title: 'Grand Performance'
+                });
+
+                var contentString = '<strong>Grand Performance</strong><br/>1938 Grand Ave · Saint Paul · MN · 55105 <br/><a href="mailto:info@gpbicycles.com">info@gpbicycles.com</a> · (651) 699-2640';
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                  infowindow.open(map,marker);
+                });
+              }
+
+              /* jshint ignore:start */
+              function initialize() {
+                var mapOptions = {
+                  zoom: 8,
+                  center: new google.maps.LatLng(-34.397, 150.644)
+                };
+
+                new google.maps.Map(document.getElementById('map-canvas'),
+                    mapOptions);
+                makeMyMap();
+              }
+              /* jshint ignore:end */
+
+              function loadScript() {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+                    'callback=initialize';
+                document.body.appendChild(script);
+              }
+
+              if (!google.maps) {
+                loadScript();
+              } else {
+                makeMyMap();
+              }
+            }]
           }
         );
     }
