@@ -173,7 +173,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            apiEndpoint: ''
+            apiEndpoint: 'http://www.gpbicycles.com'
           }
         }
       }
@@ -263,6 +263,18 @@ module.exports = function (grunt) {
           src: '*.js',
           dest: '.tmp/concat/scripts'
         }]
+      }
+    },
+
+    uncss: {
+      dist: {
+        options: {
+          csspath: '../.tmp',
+          stylesheets: ['../.tmp/concat/styles/vendor.css']
+        },
+        files: {
+          '.tmp/styles/vendor.css': ['<%= yeoman.dist %>/**/*.html']
+        }
       }
     },
 
@@ -398,6 +410,7 @@ module.exports = function (grunt) {
     'concat',
     'ngmin',
     'copy:dist',
+    'uncss',
     'cdnify',
     'cssmin',
     'uglify',

@@ -12,10 +12,6 @@
     <title>Grand Performance</title>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -93,31 +89,26 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script async src="bower_components/es5-shim/es5-shim.js"></script>
+    <script async src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
     <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js" async></script>
-    <script src="scripts/loader.js" async></script>
-    <script src="scripts/controllers/main.js" async></script>
-    <script src="scripts/services/services.js" async></script>
-    <script src="scripts/directives/directives.js" async></script>
-    <!-- endbuild -->
+    <script async defer src="bower_components/angular/angular.js"></script>
+    <script async defer src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script async defer src="bower_components/angular-resource/angular-resource.js"></script>
+    <script async defer src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script async defer src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script async defer src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <!-- build:js({.tmp,app}) scripts/config.js -->
-    <script src="scripts/config.js" async></script>
+    <script async defer src="scripts/app.js"></script>
+    <script async defer src="scripts/config.js"></script>
+    <script async defer src="scripts/loader.js"></script>
+    <script async defer src="scripts/controllers/main.js"></script>
+    <script async defer src="scripts/services/services.js"></script>
+    <script async defer src="scripts/directives/directives.js"></script>
     <!-- endbuild -->
 
     <div id="fb-root"></div>

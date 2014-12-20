@@ -1,3 +1,4 @@
+/* global google */
 'use strict';
 
 var app = angular.module('fbPagesUiApp', [
@@ -186,9 +187,20 @@ app.config(
         .state('contact', {
             url: '/contact',
             templateUrl: 'views/contact.html',
-            controller: [function () {
-              /* global google */
-              function makeMyMap() {
+            controller: ['$q', '$window', function ($q, $window) {
+              var deferred = $q.defer();
+
+              if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                $window.googleMapsInitialized = deferred.resolve;
+
+                var script  = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src  = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+                    'callback=googleMapsInitialized';
+                document.body.appendChild(script);
+              } 
+
+              deferred.promise.then(function() {
                 var position = new google.maps.LatLng(44.939914, -93.182111);
                 var myOptions = {
                   zoom: 14,
@@ -213,34 +225,7 @@ app.config(
                 google.maps.event.addListener(marker, 'click', function() {
                   infowindow.open(map,marker);
                 });
-              }
-
-              /* jshint ignore:start */
-              function initialize() {
-                var mapOptions = {
-                  zoom: 8,
-                  center: new google.maps.LatLng(-34.397, 150.644)
-                };
-
-                new google.maps.Map(document.getElementById('map-canvas'),
-                    mapOptions);
-                makeMyMap();
-              }
-              /* jshint ignore:end */
-
-              function loadScript() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-                    'callback=initialize';
-                document.body.appendChild(script);
-              }
-
-              if (!google.maps) {
-                loadScript();
-              } else {
-                makeMyMap();
-              }
+              });
             }]
           }
         );
