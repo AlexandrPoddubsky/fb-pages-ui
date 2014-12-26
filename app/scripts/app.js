@@ -3,14 +3,13 @@
 
 var app = angular.module('fbPagesUiApp', [
   'fbPagesUiLoader',
-  'ngCookies',
   'ngResource',
-  'ngSanitize',
   'fbPagesUiApp.services',
   'config',
   'fbPagesUiApp.directives',
   'fbPagesUiApp.controllers',
-  'ui.router'
+  'ui.router',
+  'ui.bootstrap'
 ]);
 
 app.run([  '$rootScope', '$state', '$stateParams', '$window',

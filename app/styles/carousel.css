@@ -66,6 +66,14 @@ body {
       height: 400px;
     }  
 }
+@media (min-width: 641px) {
+    .carousel {
+      height: 300px;
+    }
+    .carousel .item {
+      height: 300px;
+    }  
+}
 @media screen and (max-width: 320px), (min-device-width: 320px) and (max-device-width: 480px) and (orientation : portrait) {
     .carousel {
       height: 150px;
