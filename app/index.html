@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="Independent and locally owned and operated, Grand Performance brings you the best of all kinds of fine bicycles and bicycling products. From newbies to enthusiasts, we are happy to get everyone properly fitted with the right bike for them. Come in and say hi!">
+    <meta name="author" content="Andrew Ralston">
+    <meta property="og:url" content="http://www.gpbicycles.com" />
+    <meta property="og:title" content="Independent and locally owned and operated, Grand Performance brings you the best of all kinds of fine bicycles and bicycling products. From newbies to enthusiasts, we are happy to get everyone properly fitted with the right bike for them. Come in and say hi!" />
+    <link rel="icon" href="images/favicon.ico">
 
     <title>Grand Performance</title>
 
@@ -54,8 +56,8 @@
         <div collapse="isCollapsed" class="navbar-right navbar-collapse bs-js-navbar-collapse">
           <ul class="nav navbar-nav" ng-click="isCollapsed=true">
             <!-- <li class="{{ $state.current.name === 'home' ? 'active' : '' }}"><a href="#/">Home</a></li> -->
-            <li class="{{ $state.current.name === 'services' ? 'active' : '' }}"><a href="#/services">Service</a></li>
             <li class="{{ $state.current.name === 'bikes' ? 'active' : '' }}"><a href="#/bikes">Bikes</a></li>
+            <li class="{{ $state.current.name === 'services' ? 'active' : '' }}"><a href="#/services">Service</a></li>
             <li class="{{ $state.current.name.indexOf('albums')>-1 ? 'active' : '' }}"><a href="#/albums">Photos</a></li>
             <li class="{{ $state.current.name === 'routes' ? 'active' : '' }}"><a href="#/routes">Rides</a></li>
             <li class="{{ $state.current.name === 'contact' ? 'active' : '' }}"><a href="#/contact">Contact</a></li>
@@ -101,8 +103,9 @@
               <div class="fb-like" data-href="{{ page.link }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
             </div>
           </div>
+
+          <hr/>
           
-          <h2 class="featurette-heading">Social feed... <span class="text-muted">'like' us on <a href="https://www.facebook.com/pages/Grand-Performance/159886885148">Facebook</a>!</span></h2>
           <div class="row" ng-repeat="post in orderedPosts.high track by $index" ng-if="$index%4==0">
             <div class="col-xs-12 col-sm-6 col-lg-3 text-center" 
                  ng-repeat="i in [$index,$index+1,$index+2,$index+3]" 
