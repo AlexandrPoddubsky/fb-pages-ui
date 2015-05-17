@@ -176,3 +176,12 @@ body {
     font-size: 50px;
   }
 }
+
+
+@media (max-width: 769px) {
+  /* sub-nav images */
+  .image-callout {
+    width: 240px;
+    height: auto;
+  }
+}
